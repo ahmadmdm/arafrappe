@@ -1719,3 +1719,16 @@ Pay,دفع,
 Internal Transfer,تحويل داخلي,
 Writeoff Amount,مبلغ الشطب,
 Writeoff Account,حساب الشطب,
+Attendance Location,موقع الحضور
+Location Name,اسم الموقع
+Allowed Radius (meters) / النطاق المسموح به (متر),النطاق المسموح به (متر)
+Map Preview / معاينة الموقع على الخريطة,معاينة الموقع على الخريطة
+GPS Coordinates / إحداثيات GPS,إحداثيات GPS
+Mobile Attendance,حضور الجوال
+GPS Attendance,الحضور عبر GPS
+Today's Overview,نظرة عامة اليوم,
+Quick Access,الوصول السريع,
+Today's Branch Sales,مبيعات الفروع اليوم,
+Today's Branch Invoices,فواتير الفروع اليوم,
+Failed POS Sync,فشل مزامنة نقطة البيع,
+Pending POS Sync,مزامنة نقطة البيع المعلقة,

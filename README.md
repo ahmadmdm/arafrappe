@@ -75,6 +75,32 @@ git pull origin main
 bench --site YOUR_SITE clear-cache
 ```
 
+## 🔍 تدقيق ملف الترجمة | Translation Audit
+
+أضيف للتطبيق أمر تدقيق سريع لاكتشاف مشاكل ملف الترجمة مثل:
+- الصفوف المكررة
+- الترجمة الفارغة
+- المصطلح نفسه مع أكثر من ترجمة
+- الصفوف ذات الأعمدة الزائدة
+
+يمكن تشغيله من مجلد bench كالتالي:
+
+```bash
+bench arabic-pro-audit-translations
+```
+
+وإذا أردت أن يفشل الأمر عند وجود مشاكل، استخدم:
+
+```bash
+bench arabic-pro-audit-translations --strict
+```
+
+ولعرض النتيجة بصيغة JSON:
+
+```bash
+bench arabic-pro-audit-translations --json
+```
+
 ---
 
 ## 📁 هيكل التطبيق | App Structure
