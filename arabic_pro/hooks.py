@@ -4,7 +4,7 @@ app_publisher = "IdeaOrbit"
 app_description = "ترجمة عربية احترافية شاملة لـ Frappe و ERPNext ‒ تغطي مصطلحات المحاسبة والمبيعات والمشتريات والمخزون والموارد البشرية بلغة عربية فصيحة ومعيارية."
 app_email = "info@ideaorbit.net"
 app_license = "MIT"
-app_version = "1.2.0"
+app_version = "2.0.0"
 app_icon = "octicon octicon-globe"
 app_color = "#1a7f37"
 
