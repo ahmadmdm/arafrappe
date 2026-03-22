@@ -21,5 +21,8 @@ add_to_apps_screen = [
 # arabic_pro is a translation-only app; no required_apps beyond frappe core
 required_apps = ["frappe"]
 
-# Override default language for sites using this app
-# boot_session = "arabic_pro.boot.boot_session"
+# ── Font Manager ───────────────────────────────────────────────────────────────
+boot_session = "arabic_pro.boot.boot_session"
+
+app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js"]
+app_include_css = ["/assets/arabic_pro/css/arabic_pro_font.css"]

@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "creation": "2026-03-22 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "font_settings_section",
+  "default_font",
+  "font_size",
+  "column_break_1",
+  "allow_user_font_override",
+  "section_break_info",
+  "info_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "font_settings_section",
+   "fieldtype": "Section Break",
+   "label": "إعدادات الخط الافتراضي للنظام"
+  },
+  {
+   "default": "Cairo",
+   "description": "الخط الذي سيُطبَّق على جميع مستخدمي النظام افتراضياً",
+   "fieldname": "default_font",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "الخط الافتراضي للنظام",
+   "options": "Cairo\nTajawal\nAlmarai\nIBM Plex Sans Arabic\nNoto Sans Arabic\nAmiri\nScheherazade New\nReem Kufi\nLateef\nHarmattan",
+   "reqd": 1
+  },
+  {
+   "default": "Medium",
+   "description": "حجم الخط الافتراضي عبر النظام",
+   "fieldname": "font_size",
+   "fieldtype": "Select",
+   "label": "حجم الخط الافتراضي",
+   "options": "Small\nMedium\nLarge\nXLarge"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "عند التفعيل يستطيع كل مستخدم اختيار خطه الخاص بشكل مستقل",
+   "fieldname": "allow_user_font_override",
+   "fieldtype": "Check",
+   "label": "السماح للمستخدمين بتغيير خطهم الشخصي"
+  },
+  {
+   "fieldname": "section_break_info",
+   "fieldtype": "Section Break",
+   "label": "معلومات الخطوط المتاحة"
+  },
+  {
+   "fieldname": "info_html",
+   "fieldtype": "HTML",
+   "options": "<div class='alert alert-info' style='direction:rtl; text-align:right; font-size:13px;'><b>الخطوط المتاحة:</b><br><ul style='margin-top:8px;'><li><b>Cairo</b> — خط عصري شائع الاستخدام</li><li><b>Tajawal</b> — خط بسيط وخفيف</li><li><b>Almarai</b> — مصمَّم للقراءة الرقمية</li><li><b>IBM Plex Sans Arabic</b> — خط احترافي تقني</li><li><b>Noto Sans Arabic</b> — خط شامل من Google</li><li><b>Amiri</b> — خط نسخي كلاسيكي أنيق</li><li><b>Scheherazade New</b> — خط تقليدي راقٍ</li><li><b>Reem Kufi</b> — خط كوفي هندسي عصري</li><li><b>Lateef</b> — خط نظيف وسلس</li><li><b>Harmattan</b> — خط أنيق وخفيف</li></ul></div>"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-03-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arabic Pro",
+ "name": "Arabic Pro Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

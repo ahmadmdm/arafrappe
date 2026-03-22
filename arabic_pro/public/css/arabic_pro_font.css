@@ -1,0 +1,314 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Arabic Pro · Font Manager Styles
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── CSS Variable (updated dynamically by JS) ─────────────────────── */
+:root {
+	--ap-font-family: "Cairo", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+	--ap-font-size: 14px;
+}
+
+/* ─── Global Font Application ──────────────────────────────────────── */
+body,
+.frappe-app,
+.navbar,
+.navbar *,
+.sidebar-menu,
+.sidebar-menu *,
+.desk-sidebar,
+.layout-main,
+.form-layout,
+.form-layout *,
+.list-row-container,
+.data-pill,
+.widget,
+.widget *,
+.modal-body,
+.modal-body *,
+.popover,
+.dropdown-menu,
+.frappe-card,
+input,
+textarea,
+select,
+button,
+.btn,
+.form-control,
+.like-disabled-input,
+.control-value,
+.control-label,
+.label-area,
+.form-section,
+.section-head {
+	font-family: var(--ap-font-family) !important;
+}
+
+/* ─── FAB Button (Floating Action Button) ──────────────────────────── */
+.ap-font-fab {
+	position: fixed;
+	bottom: 28px;
+	left: 28px;
+	z-index: 9000;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: var(--primary, #2490ef);
+	color: #fff;
+	border: none;
+	box-shadow: 0 3px 12px rgba(36, 144, 239, 0.45);
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	line-height: 1;
+	font-family: "Georgia", serif !important;
+	letter-spacing: -0.5px;
+}
+
+.ap-font-fab:hover {
+	transform: scale(1.12) translateY(-2px);
+	box-shadow: 0 6px 20px rgba(36, 144, 239, 0.5);
+}
+
+.ap-font-fab:active {
+	transform: scale(0.96);
+}
+
+/* ─── Font Picker Dialog ────────────────────────────────────────────── */
+.ap-font-picker-dialog .modal-dialog {
+	max-width: 780px;
+}
+
+.ap-font-picker-dialog .modal-header {
+	background: linear-gradient(135deg, #1a7f37 0%, #2490ef 100%);
+	color: #fff;
+	border-radius: 8px 8px 0 0;
+}
+
+.ap-font-picker-dialog .modal-header .modal-title,
+.ap-font-picker-dialog .modal-header .btn-modal-close {
+	color: #fff !important;
+}
+
+/* ─── Size Row ──────────────────────────────────────────────────────── */
+.ap-size-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 16px 10px;
+	border-bottom: 1px solid var(--border-color);
+	direction: rtl;
+}
+
+.ap-size-row > label {
+	font-size: 13px;
+	color: var(--text-muted);
+	font-weight: 500;
+	white-space: nowrap;
+	margin: 0;
+}
+
+.ap-size-btns {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.ap-size-btn {
+	padding: 5px 14px;
+	border: 1.5px solid var(--border-color);
+	border-radius: 20px;
+	cursor: pointer;
+	background: none;
+	transition: all 0.18s ease;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--text-color);
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.ap-size-btn .ap-size-en {
+	font-size: 11px;
+	font-weight: 700;
+	opacity: 0.7;
+}
+
+.ap-size-btn.selected,
+.ap-size-btn:hover {
+	border-color: var(--primary);
+	background: var(--blue-highlight-color, rgba(36, 144, 239, 0.08));
+	color: var(--primary);
+}
+
+/* ─── Current Font Badge ────────────────────────────────────────────── */
+.ap-current-font-info {
+	padding: 8px 16px;
+	background: var(--subtle-fg, #f5f7fa);
+	border-bottom: 1px solid var(--border-color);
+	direction: rtl;
+	font-size: 12px;
+	color: var(--text-muted);
+}
+
+.ap-current-font-info span {
+	color: var(--primary);
+	font-weight: 600;
+}
+
+/* ─── Font Grid ─────────────────────────────────────────────────────── */
+.ap-font-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+	gap: 12px;
+	padding: 16px;
+	direction: rtl;
+	max-height: 420px;
+	overflow-y: auto;
+}
+
+.ap-font-grid::-webkit-scrollbar {
+	width: 5px;
+}
+
+.ap-font-grid::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.ap-font-grid::-webkit-scrollbar-thumb {
+	background: var(--border-color);
+	border-radius: 3px;
+}
+
+/* ─── Font Card ─────────────────────────────────────────────────────── */
+.ap-font-card {
+	border: 2px solid var(--border-color);
+	border-radius: 10px;
+	padding: 14px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	background: var(--card-bg, #fff);
+	position: relative;
+	overflow: hidden;
+}
+
+.ap-font-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: transparent;
+	transition: background 0.2s;
+}
+
+.ap-font-card:hover {
+	border-color: var(--primary);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+	transform: translateY(-2px);
+}
+
+.ap-font-card:hover::before {
+	background: var(--primary);
+}
+
+.ap-font-card.selected {
+	border-color: var(--primary);
+	background: var(--blue-highlight-color, rgba(36, 144, 239, 0.05));
+	box-shadow: 0 0 0 3px rgba(36, 144, 239, 0.15);
+}
+
+.ap-font-card.selected::before {
+	background: var(--primary);
+}
+
+.ap-font-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.ap-font-name-en {
+	font-size: 11px;
+	color: var(--text-muted);
+	font-family: "Segoe UI", sans-serif !important;
+	letter-spacing: 0.3px;
+}
+
+.ap-font-name-ar {
+	font-size: 12px;
+	color: var(--text-muted);
+	margin-top: 6px;
+	text-align: right;
+}
+
+.ap-font-sample {
+	font-size: 19px;
+	line-height: 1.6;
+	color: var(--heading-color, #1f272e);
+	text-align: right;
+	direction: rtl;
+}
+
+/* ─── Badges ────────────────────────────────────────────────────────── */
+.ap-default-badge {
+	display: inline-block;
+	background: var(--green-highlight-color, rgba(26, 127, 55, 0.12));
+	color: var(--green-700, #1a7f37);
+	border-radius: 10px;
+	font-size: 10px;
+	padding: 1px 7px;
+	font-weight: 600;
+	vertical-align: middle;
+}
+
+.ap-selected-badge {
+	display: inline-block;
+	background: var(--primary);
+	color: #fff;
+	border-radius: 10px;
+	font-size: 10px;
+	padding: 1px 7px;
+	font-weight: 600;
+	vertical-align: middle;
+}
+
+/* ─── Admin Section ─────────────────────────────────────────────────── */
+.ap-admin-section {
+	padding: 14px 16px;
+	background: var(--subtle-fg, #f5f7fa);
+	border-top: 1px solid var(--border-color);
+	direction: rtl;
+}
+
+.ap-admin-label {
+	font-size: 11px;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.ap-admin-row {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+/* ─── Locked Overlay ────────────────────────────────────────────────── */
+.ap-locked-notice {
+	padding: 10px 16px;
+	background: var(--yellow-highlight-color, rgba(255, 193, 7, 0.1));
+	border-top: 1px solid var(--border-color);
+	font-size: 12px;
+	color: var(--text-muted);
+	direction: rtl;
+	text-align: center;
+}
