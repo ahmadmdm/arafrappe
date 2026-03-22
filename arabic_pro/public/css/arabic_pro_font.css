@@ -43,38 +43,13 @@ button,
 	font-family: var(--ap-font-family) !important;
 }
 
-/* ─── FAB Button (Floating Action Button) ──────────────────────────── */
-.ap-font-fab {
-	position: fixed;
-	bottom: 28px;
-	left: 28px;
-	z-index: 9000;
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	background: var(--primary, #2490ef);
-	color: #fff;
-	border: none;
-	box-shadow: 0 3px 12px rgba(36, 144, 239, 0.45);
-	cursor: pointer;
-	font-size: 15px;
-	font-weight: 700;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	line-height: 1;
-	font-family: "Georgia", serif !important;
-	letter-spacing: -0.5px;
+/* ─── Navbar Font Item ──────────────────────────────────────────────── */
+a.ap-navbar-font-item {
+	direction: rtl;
 }
 
-.ap-font-fab:hover {
-	transform: scale(1.12) translateY(-2px);
-	box-shadow: 0 6px 20px rgba(36, 144, 239, 0.5);
-}
-
-.ap-font-fab:active {
-	transform: scale(0.96);
+a.ap-navbar-font-item .ap-navbar-icon {
+	margin-inline-end: 4px;
 }
 
 /* ─── Font Picker Dialog ────────────────────────────────────────────── */

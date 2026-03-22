@@ -90,7 +90,6 @@
 		is_admin: false,
 	};
 	var _styleEl = null;
-	var _fabInjected = false;
 	var _fontsLoaded = false;
 
 	// ─── Google Fonts Loader ───────────────────────────────────────────────────
@@ -169,19 +168,41 @@
 		}
 	}
 
-	// ─── FAB Injection ─────────────────────────────────────────────────────────
-	function injectFAB() {
-		if (_fabInjected || document.getElementById("ap-font-fab")) return;
-		_fabInjected = true;
+	// ─── Navbar Item Injection ──────────────────────────────────────────────────
+	function injectNavbarItem() {
+		if (document.getElementById("ap-navbar-font-item")) return;
 
-		var fab = document.createElement("button");
-		fab.id = "ap-font-fab";
-		fab.className = "ap-font-fab";
-		fab.title = "اختيار الخط العربي";
-		fab.setAttribute("aria-label", "Font picker");
-		fab.innerHTML = "<span>Aa</span>";
-		fab.addEventListener("click", showFontPicker);
-		document.body.appendChild(fab);
+		var menu = document.getElementById("toolbar-user");
+		if (!menu) return;
+
+		// Create divider
+		var divider = document.createElement("div");
+		divider.className = "dropdown-divider";
+		divider.id = "ap-navbar-font-divider";
+
+		// Create menu item
+		var item = document.createElement("a");
+		item.className = "dropdown-item ap-navbar-font-item";
+		item.id = "ap-navbar-font-item";
+		item.href = "#";
+		item.innerHTML = '<span class="ap-navbar-icon">🔤</span> اختيار الخط العربي';
+
+		item.addEventListener("click", function (e) {
+			e.preventDefault();
+			setTimeout(showFontPicker, 150);
+		});
+
+		// Insert before the last divider (before Logout section)
+		var dividers = menu.querySelectorAll(".dropdown-divider");
+		var lastDivider = dividers.length ? dividers[dividers.length - 1] : null;
+
+		if (lastDivider) {
+			menu.insertBefore(item, lastDivider);
+			menu.insertBefore(divider, item);
+		} else {
+			menu.appendChild(divider);
+			menu.appendChild(item);
+		}
 	}
 
 	// ─── Font Picker Dialog ────────────────────────────────────────────────────
@@ -424,8 +445,8 @@
 		// Load Google Fonts
 		loadGoogleFonts();
 
-		// Inject FAB
-		injectFAB();
+		// Inject navbar item
+		setTimeout(injectNavbarItem, 600);
 	}
 
 	function lsGet(key) {
@@ -460,11 +481,10 @@
 		init();
 	});
 
-	// frappe page change event - ensure FAB is present after navigation
+	// frappe page change event - ensure navbar item is present after navigation
 	$(document).on("page-change", function () {
-		if (!document.getElementById("ap-font-fab")) {
-			_fabInjected = false;
-			injectFAB();
+		if (!document.getElementById("ap-navbar-font-item")) {
+			setTimeout(injectNavbarItem, 300);
 		}
 	});
 })();

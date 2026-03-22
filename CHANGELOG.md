@@ -1,0 +1,42 @@
+# Changelog
+
+جميع التغييرات الجوهرية لهذا المشروع موثّقة في هذا الملف.
+
+---
+
+## [2.2.0] - 2026-03-22
+
+### مميزات جديدة
+- **نقل منتقي الخط إلى شريط التنقل**: تم نقل أداة اختيار الخط العربي من الزر العائم (FAB) إلى قائمة المستخدم في شريط التنقل العلوي لتجربة أكثر انسجاماً مع واجهة ERPNext.
+
+### تحسينات الترجمة
+- إضافة ترجمات لعناصر قائمة المستخدم: `My Profile` ← ملفي الشخصي، `My Settings` ← إعداداتي
+- إضافة ~40 ترجمة جديدة تشمل:
+  - صفحات CRM: Sales Pipeline Analytics، Opportunity Summary by Sales Stage، CRM Settings
+  - صفحات HR والرواتب: HR Dashboard، Recruitment Dashboard، Employee Lifecycle Dashboard، Attendance Dashboard، Expense Claims Dashboard، Shift & Attendance، Salary Payout، Tax & Benefits، Outgoing Salary
+  - صفحات المخزون: Total Stock Value، Total Warehouses، Total Active Items، Items & Pricing
+  - صفحات المبيعات والمشتريات: Territory Wise Sales
+  - صفحات التصنيع: BOM Creator، Forecasting
+  - نصوص الإعداد التمهيدي للوحدات (Buying، Selling، Stock، HR، Payroll)
+  - تعابير "تعلّم" للوحدات المختلفة: Learn Procurement، Learn Sales Management، Learn Inventory Management، Learn Manufacturing، Learn Project Management
+
+---
+
+## [2.1.0] - 2026-03-10
+
+### مميزات جديدة
+- **منتقي الخط العربي**: إضافة أداة لاختيار الخط العربي مع نظام إدارة مدعوم من المسؤول لتحديد الخط الافتراضي.
+
+---
+
+## [2.0.0] - 2026-03-01
+
+### مميزات جديدة
+- مراجعة شاملة للترجمات العربية لـ Frappe وERPNext.
+- دعم رمز التطبيق وتكامل شاشة التطبيقات.
+
+---
+
+## [1.0.0]
+
+- الإصدار الأولي: ترجمات عربية أساسية لـ Frappe وERPNext.
