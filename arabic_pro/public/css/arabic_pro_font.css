@@ -4,7 +4,7 @@
 
 /* ─── CSS Variable (updated dynamically by JS) ─────────────────────── */
 :root {
-	--ap-font-family: "Cairo", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+	--ap-font-family: "Cairo", "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, Arial, sans-serif;
 	--ap-font-size: 14px;
 }
 

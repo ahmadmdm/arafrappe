@@ -90,45 +90,13 @@
 		is_admin: false,
 	};
 	var _styleEl = null;
-	var _fontsLoaded = false;
 
-	// ─── Google Fonts Loader ───────────────────────────────────────────────────
-	function loadGoogleFonts() {
-		if (_fontsLoaded || document.getElementById("ap-google-fonts")) {
-			_fontsLoaded = true;
-			return;
-		}
-		_fontsLoaded = true;
-
-		var preconnect1 = document.createElement("link");
-		preconnect1.rel = "preconnect";
-		preconnect1.href = "https://fonts.googleapis.com";
-
-		var preconnect2 = document.createElement("link");
-		preconnect2.rel = "preconnect";
-		preconnect2.href = "https://fonts.gstatic.com";
-		preconnect2.crossOrigin = "anonymous";
-
-		var link = document.createElement("link");
-		link.id = "ap-google-fonts";
-		link.rel = "stylesheet";
-		link.href =
-			"https://fonts.googleapis.com/css2?" +
-			"family=Cairo:wght@300;400;500;600;700" +
-			"&family=Tajawal:wght@300;400;500;700" +
-			"&family=Almarai:wght@300;400;700;800" +
-			"&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700" +
-			"&family=Noto+Sans+Arabic:wght@300;400;500;600;700" +
-			"&family=Amiri:ital,wght@0,400;0,700;1,400" +
-			"&family=Scheherazade+New:wght@400;500;600;700" +
-			"&family=Reem+Kufi:wght@400;500;600;700" +
-			"&family=Lateef:wght@300;400;700" +
-			"&family=Harmattan:wght@400;500;600;700" +
-			"&display=swap&subset=arabic";
-
-		document.head.appendChild(preconnect1);
-		document.head.appendChild(preconnect2);
-		document.head.appendChild(link);
+	function getFontStack(font) {
+		return (
+			'"' +
+			font +
+			'","Noto Sans Arabic","Geeza Pro","Segoe UI",Tahoma,Arial,sans-serif'
+		);
 	}
 
 	// ─── Font Application ──────────────────────────────────────────────────────
@@ -153,9 +121,9 @@
 		var px = (SIZE_MAP[size] && SIZE_MAP[size].px) || "14px";
 
 		getStyleEl().textContent =
-			':root{--ap-font-family:"' +
-			font +
-			'","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;--ap-font-size:' +
+			':root{--ap-font-family:' +
+			getFontStack(font) +
+			';--ap-font-size:' +
 			px +
 			";}";
 
@@ -441,9 +409,6 @@
 		var font = _settings.font || lsGet("arabic_pro_font") || "Cairo";
 		var size = _settings.size || lsGet("arabic_pro_font_size") || "Medium";
 		applyFont(font, size);
-
-		// Load Google Fonts
-		loadGoogleFonts();
 
 		// Inject navbar item
 		setTimeout(injectNavbarItem, 600);

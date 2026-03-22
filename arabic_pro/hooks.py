@@ -4,7 +4,7 @@ app_publisher = "IdeaOrbit"
 app_description = "ترجمة عربية احترافية شاملة لـ Frappe و ERPNext ‒ تغطي مصطلحات المحاسبة والمبيعات والمشتريات والمخزون والموارد البشرية بلغة عربية فصيحة ومعيارية."
 app_email = "info@ideaorbit.net"
 app_license = "MIT"
-app_version = "2.0.0"
+app_version = "2.2.1"
 app_icon = "octicon octicon-globe"
 app_color = "#1a7f37"
 app_logo_url = "/assets/arabic_pro/images/logo.svg"
@@ -24,5 +24,5 @@ required_apps = ["frappe"]
 # ── Font Manager ───────────────────────────────────────────────────────────────
 boot_session = "arabic_pro.boot.boot_session"
 
-app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js"]
-app_include_css = ["/assets/arabic_pro/css/arabic_pro_font.css"]
+app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js?v=20260322d"]
+app_include_css = ["/assets/arabic_pro/css/arabic_pro_font.css?v=20260322d"]
