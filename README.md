@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-1.2.0-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.1.0-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -27,6 +27,7 @@
 | 📦 **المخزون** | الأصناف، المستودعات، قيود المخزون |
 | 🧾 **ZATCA** | كامل حقول الفوترة الإلكترونية السعودية |
 | 🏛️ **Saudi HR** | جميع مصطلحات الموارد البشرية السعودية |
+| 🔤 **مدير الخطوط** | اختيار خط عربي مخصص لكل مستخدم مع خط افتراضي للنظام |
 | ✅ **جودة عالية** | لا تكرارات، لا ترجمات فارغة، مراجعة احترافية |
 
 ---
@@ -109,9 +110,19 @@ bench arabic-pro-audit-translations --json
 arabic_pro/
 ├── arabic_pro/
 │   ├── __init__.py          # رقم الإصدار
-│   ├── hooks.py             # إعدادات التطبيق
+│   ├── hooks.py             # إعدادات التطبيق (boot_session, app_include_js/css)
+│   ├── api.py               # واجهات الخطوط (save_user_font, reset_user_font)
+│   ├── boot.py              # حقن إعدادات الخط في frappe.boot
+│   ├── arabic_pro/
+│   │   └── doctype/
+│   │       └── arabic_pro_settings/   # DocType إعدادات الخط (Admin فقط)
 │   ├── config/
 │   │   └── arabic_pro.py   # إعدادات الوحدة
+│   ├── public/
+│   │   ├── js/
+│   │   │   └── arabic_pro_font.js    # محرك الخطوط + واجهة الاختيار
+│   │   └── css/
+│   │       └── arabic_pro_font.css   # تنسيقات FAB والحوار وشبكة الخطوط
 │   └── translations/
 │       └── ar.csv          # ملف الترجمات (1,700+ مصطلح)
 ├── pyproject.toml
@@ -147,7 +158,58 @@ arabic_pro/
 
 ---
 
+## � مدير الخطوط العربية | Arabic Font Manager
+
+منذ الإصدار **v2.1.0**، يتضمن التطبيق نظام اختيار خطوط عربية احترافي يعمل على كامل واجهة Frappe Desk.
+
+### الخطوط المدعومة
+
+| الخط | اسمه بالعربية | الطابع |
+|------|--------------|--------|
+| Cairo | كايرو | عصري شائع |
+| Tajawal | تجوال | بسيط أنيق |
+| Almarai | المرعي | مصمَّم للقراءة الرقمية |
+| IBM Plex Sans Arabic | IBM Plex | احترافي تقني |
+| Noto Sans Arabic | نوتو سانز | شامل متوازن |
+| Amiri | أميري | نسخي كلاسيكي |
+| Scheherazade New | شهرزاد | تقليدي راقٍ |
+| Reem Kufi | ريم كوفي | كوفي هندسي |
+| Lateef | لطيف | نظيف سلس |
+| Harmattan | هرمتان | خفيف أنيق |
+
+### كيفية الاستخدام
+
+- **زر «Aa»** يظهر في أسفل يسار الشاشة — انقر عليه لفتح منتقي الخطوط
+- اختر الخط والحجم (صغير / متوسط / كبير / كبير جداً) وانقر **حفظ**
+- لإعادة تعيين الخط الشخصي: زر **↩ إعادة للافتراضي**
+- **المسؤولون فقط** يمكنهم تغيير الخط الافتراضي للنظام من **إعدادات Arabic Pro**
+
+### إعدادات المسؤول
+
+افتح **إعدادات Arabic Pro** من: `http://YOUR_SITE/app/arabic-pro-settings`
+
+| الحقل | الوصف |
+|-------|-------|
+| `default_font` | الخط الافتراضي لكامل النظام |
+| `font_size` | الحجم الافتراضي (Small/Medium/Large/XLarge) |
+| `allow_user_font_override` | السماح للمستخدمين بتغيير خطهم الشخصي |
+
+---
+
 ## 📝 سجل التغييرات | Changelog
+
+### v2.1.0 — 2026-03-22
+- ✅ إضافة **مدير الخطوط العربية** مع 10 خطوط Google Fonts
+- ✅ زر FAB «Aa» عائم لفتح منتقي الخطوط
+- ✅ تفضيل شخصي لكل مستخدم (محفوظ في Frappe Defaults)
+- ✅ DocType `Arabic Pro Settings` للمسؤولين (خط افتراضي للنظام)
+- ✅ محدد حجم الخط: صغير / متوسط / كبير / XL
+- ✅ حفظ فوري في localStorage (بلا FOUT)
+- ✅ دعم الوضع الداكن Dark Mode
+- ✅ إضافة `boot.py` و`api.py` لدعم الخطوط من طرف الخادم
+
+### v2.0.0 — 2026-03-21
+- ✅ إضافة شعار SVG للتطبيق وأيقونة في شاشة التطبيقات
 
 ### v1.2.0 — 2026-03-17
 - ✅ إضافة 202 مصطلح جديد
