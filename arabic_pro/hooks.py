@@ -7,6 +7,16 @@ app_license = "MIT"
 app_version = "2.0.0"
 app_icon = "octicon octicon-globe"
 app_color = "#1a7f37"
+app_logo_url = "/assets/arabic_pro/images/logo.svg"
+
+add_to_apps_screen = [
+        {
+                "name": "arabic_pro",
+                "logo": "/assets/arabic_pro/images/logo.svg",
+                "title": "Arabic Pro",
+                "route": "/app/arabic-pro",
+        },
+]
 
 # arabic_pro is a translation-only app; no required_apps beyond frappe core
 required_apps = ["frappe"]
