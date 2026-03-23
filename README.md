@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.1.0-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.2.2-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -160,7 +160,7 @@ arabic_pro/
 
 ## � مدير الخطوط العربية | Arabic Font Manager
 
-منذ الإصدار **v2.1.0**، يتضمن التطبيق نظام اختيار خطوط عربية احترافي يعمل على كامل واجهة Frappe Desk.
+منذ الإصدار **v2.2.2**، يتضمن التطبيق نظام اختيار خطوط عربية احترافي يعمل على كامل واجهة Frappe Desk.
 
 ### الخطوط المدعومة
 
@@ -197,6 +197,11 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.2.2 — 2026-03-23
+- ✅ توحيد رقم الإصدار بين `__init__` و `hooks.py` و `setup.py`
+- ✅ إزالة صف ترجمة مكرر من `translations/ar.csv`
+- ✅ تحسين جاهزية الحزمة للنقل والتثبيت على بيئة جديدة
 
 ### v2.1.0 — 2026-03-22
 - ✅ إضافة **مدير الخطوط العربية** مع 10 خطوط Google Fonts

@@ -1,8 +1,10 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
+
+from arabic_pro import __version__
 
 setup(
     name="arabic_pro",
-    version="2.0.0",
+    version=__version__,
     description="ترجمة عربية احترافية شاملة لـ Frappe و ERPNext",
     author="IdeaOrbit",
     author_email="info@ideaorbit.net",

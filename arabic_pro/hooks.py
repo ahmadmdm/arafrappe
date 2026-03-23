@@ -1,10 +1,12 @@
+from . import __version__ as app_version
+
+
 app_name = "arabic_pro"
 app_title = "Arabic Pro Translations"
 app_publisher = "IdeaOrbit"
 app_description = "ترجمة عربية احترافية شاملة لـ Frappe و ERPNext ‒ تغطي مصطلحات المحاسبة والمبيعات والمشتريات والمخزون والموارد البشرية بلغة عربية فصيحة ومعيارية."
 app_email = "info@ideaorbit.net"
 app_license = "MIT"
-app_version = "2.2.1"
 app_icon = "octicon octicon-globe"
 app_color = "#1a7f37"
 app_logo_url = "/assets/arabic_pro/images/logo.svg"
