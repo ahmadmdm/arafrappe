@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.2.2-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.2.3-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -160,7 +160,7 @@ arabic_pro/
 
 ## � مدير الخطوط العربية | Arabic Font Manager
 
-منذ الإصدار **v2.2.2**، يتضمن التطبيق نظام اختيار خطوط عربية احترافي يعمل على كامل واجهة Frappe Desk.
+منذ الإصدار **v2.2.3**، يتضمن التطبيق نظام اختيار خطوط عربية احترافي يعمل على كامل واجهة Frappe Desk.
 
 ### الخطوط المدعومة
 
@@ -197,6 +197,11 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.2.3 — 2026-03-26
+- ✅ إضافة ترجمات مفقودة لمساحة عمل Saudi HR مثل `Employment Contracts` و`Monthly Payroll` و`Compliance Tracker`
+- ✅ ترجمة عناوين بطاقات ومخططات Saudi HR مثل `Active Contracts by Type` و`GOSI Monthly Contributions`
+- ✅ ترجمة عناصر `Mobile Attendance` وحقول الحضور اليومية الظاهرة في مساحة العمل
 
 ### v2.2.2 — 2026-03-23
 - ✅ توحيد رقم الإصدار بين `__init__` و `hooks.py` و `setup.py`

@@ -4,6 +4,28 @@
 
 ---
 
+## [2.2.3] - 2026-03-26
+
+### تحسينات الترجمة
+- إضافة ترجمات مفقودة لمساحة عمل Saudi HR وعناصرها السريعة مثل:
+  - `Employment Contracts`
+  - `Monthly Payroll`
+  - `Compliance Tracker`
+  - `Core Areas`
+  - `Setup & Policy`
+  - `People & Contracts`
+  - `Attendance & Payroll`
+  - `Leaves & Benefits`
+  - `Compliance & Legal`
+- إضافة ترجمات لعناوين المخططات والاختصارات الظاهرة في Saudi HR:
+  - `Active Contracts by Type`
+  - `GOSI Monthly Contributions`
+  - `Mobile Attendance`
+  - `Saudi Employee Checkin`
+  - `Saudi Daily Attendance`
+
+---
+
 ## [2.2.0] - 2026-03-22
 
 ### مميزات جديدة
