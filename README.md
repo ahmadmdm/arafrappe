@@ -62,6 +62,10 @@ bench --site YOUR_SITE install-app arabic_pro
 bench --site YOUR_SITE clear-cache
 ```
 
+**الاعتماديات | Dependencies:**
+- لا توجد تبعيات Python إضافية خارج Frappe/ERPNext؛ ملف `pyproject.toml` يعلن `dependencies = []`
+- التطبيق يضيف مدير الخطوط وصفحة الإعدادات عبر المسار: `/app/arabic-pro-settings`
+
 **تأكد من أن لغة النظام مضبوطة على العربية:**
 - اذهب إلى **إعدادات النظام** ← اضبط **اللغة** على `Arabic (ar)`
 

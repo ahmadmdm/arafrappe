@@ -16,7 +16,7 @@ add_to_apps_screen = [
                 "name": "arabic_pro",
                 "logo": "/assets/arabic_pro/images/logo.svg",
                 "title": "Arabic Pro",
-                "route": "/app/arabic-pro",
+                "route": "/app/arabic-pro-settings",
         },
 ]
 
