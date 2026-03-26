@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.2.3-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.2.4-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -197,6 +197,12 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.2.4 — 2026-03-26
+- ✅ تحميل خطوط الويب العربية صراحةً لضمان تغيّر الخط فعلياً عند التبديل
+- ✅ إظهار اسم الخط الحالي داخل قائمة المستخدم لتوضيح الخط المطبّق مباشرةً
+- ✅ تطبيق حجم الخط المختار بشكل شامل على الواجهة وتحسين مظهر عنصر القائمة
+- ✅ تحديث أرقام أصول JS/CSS لكسر الكاش بعد تعديل مدير الخطوط
 
 ### v2.2.3 — 2026-03-26
 - ✅ إضافة ترجمات مفقودة لمساحة عمل Saudi HR مثل `Employment Contracts` و`Monthly Payroll` و`Compliance Tracker`

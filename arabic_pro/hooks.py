@@ -26,5 +26,5 @@ required_apps = ["frappe"]
 # ── Font Manager ───────────────────────────────────────────────────────────────
 boot_session = "arabic_pro.boot.boot_session"
 
-app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js?v=20260322d"]
-app_include_css = ["/assets/arabic_pro/css/arabic_pro_font.css?v=20260322d"]
+app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js?v=20260326f"]
+app_include_css = ["/assets/arabic_pro/css/arabic_pro_font.css?v=20260326f"]

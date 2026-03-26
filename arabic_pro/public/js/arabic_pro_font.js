@@ -99,6 +99,17 @@
 		);
 	}
 
+	function getFontMeta(font) {
+		return FONTS.find(function (item) {
+			return item.id === font;
+		});
+	}
+
+	function getFontLabel(font) {
+		var meta = getFontMeta(font);
+		return meta ? meta.nameAr : font;
+	}
+
 	// ─── Font Application ──────────────────────────────────────────────────────
 	function getStyleEl() {
 		if (!_styleEl) {
@@ -134,6 +145,20 @@
 		} catch (e) {
 			// ignore
 		}
+
+		updateNavbarItem();
+	}
+
+	function updateNavbarItem() {
+		var item = document.getElementById("ap-navbar-font-item");
+		if (!item) return;
+
+		item.innerHTML =
+			'<span class="ap-navbar-icon">🔤</span>' +
+			'<span class="ap-navbar-font-label">الخط العربي</span>' +
+			'<span class="ap-navbar-font-value">' +
+			getFontLabel(_current.font) +
+			"</span>";
 	}
 
 	// ─── Navbar Item Injection ──────────────────────────────────────────────────
@@ -153,7 +178,12 @@
 		item.className = "dropdown-item ap-navbar-font-item";
 		item.id = "ap-navbar-font-item";
 		item.href = "#";
-		item.innerHTML = '<span class="ap-navbar-icon">🔤</span> اختيار الخط العربي';
+		item.innerHTML =
+			'<span class="ap-navbar-icon">🔤</span>' +
+			'<span class="ap-navbar-font-label">الخط العربي</span>' +
+			'<span class="ap-navbar-font-value">' +
+			getFontLabel(_current.font) +
+			"</span>";
 
 		item.addEventListener("click", function (e) {
 			e.preventDefault();
@@ -412,6 +442,7 @@
 
 		// Inject navbar item
 		setTimeout(injectNavbarItem, 600);
+		setTimeout(updateNavbarItem, 700);
 	}
 
 	function lsGet(key) {

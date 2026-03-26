@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Almarai:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&family=Lateef:wght@400;500;600;700&family=Harmattan:wght@400;500;600;700&display=swap");
+
 /* ═══════════════════════════════════════════════════════════════════
    Arabic Pro · Font Manager Styles
    ═══════════════════════════════════════════════════════════════════ */
@@ -9,6 +11,7 @@
 }
 
 /* ─── Global Font Application ──────────────────────────────────────── */
+html,
 body,
 .frappe-app,
 .navbar,
@@ -41,15 +44,32 @@ button,
 .form-section,
 .section-head {
 	font-family: var(--ap-font-family) !important;
+	font-size: var(--ap-font-size);
 }
 
 /* ─── Navbar Font Item ──────────────────────────────────────────────── */
 a.ap-navbar-font-item {
 	direction: rtl;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
 }
 
 a.ap-navbar-font-item .ap-navbar-icon {
 	margin-inline-end: 4px;
+}
+
+.ap-navbar-font-label {
+	flex: 1;
+	text-align: right;
+}
+
+.ap-navbar-font-value {
+	font-size: 11px;
+	color: var(--text-muted);
+	font-weight: 600;
+	white-space: nowrap;
 }
 
 /* ─── Font Picker Dialog ────────────────────────────────────────────── */
