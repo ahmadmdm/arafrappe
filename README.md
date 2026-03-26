@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.2.4-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.2.5-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -201,6 +201,11 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.2.5 — 2026-03-27
+- ✅ إصلاح ظهور رموز مثل `` و `` في القوائم المنسدلة عبر إبقاء `Font Awesome` خارج تطبيق الخط العربي
+- ✅ إضافة ترجمات جديدة للعناصر الظاهرة في مساحة عمل Saudi HR مثل `Quick Actions` و `Lifecycle Stages` وتقارير القروض
+- ✅ تحديث نسخة أصول `Arabic Pro` لضمان تحميل الإصلاحات مباشرة بعد `clear-cache`
 
 ### v2.2.4 — 2026-03-26
 - ✅ تحميل خطوط الويب العربية صراحةً لضمان تغيّر الخط فعلياً عند التبديل

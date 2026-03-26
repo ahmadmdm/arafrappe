@@ -47,6 +47,16 @@ button,
 	font-size: var(--ap-font-size);
 }
 
+/* Keep icon fonts intact; applying the Arabic font here turns icons into glyph boxes. */
+i.fa,
+span.fa,
+.fa,
+.fa::before,
+[class^="fa-"]::before,
+[class*=" fa-"]::before {
+	font-family: "FontAwesome" !important;
+}
+
 /* ─── Navbar Font Item ──────────────────────────────────────────────── */
 a.ap-navbar-font-item {
 	direction: rtl;
