@@ -473,14 +473,16 @@
 	}
 
 	// frappe's startup event (fired after boot session is loaded)
-	$(document).on("startup", function () {
-		init();
-	});
+	if (window.$) {
+		$(document).on("startup", function () {
+			init();
+		});
 
-	// frappe page change event - ensure navbar item is present after navigation
-	$(document).on("page-change", function () {
-		if (!document.getElementById("ap-navbar-font-item")) {
-			setTimeout(injectNavbarItem, 300);
-		}
-	});
+		// frappe page change event - ensure navbar item is present after navigation
+		$(document).on("page-change", function () {
+			if (!document.getElementById("ap-navbar-font-item")) {
+				setTimeout(injectNavbarItem, 300);
+			}
+		});
+	}
 })();
