@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.2.7-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.2.8-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -202,7 +202,7 @@ arabic_pro/
 
 ## 📝 سجل التغييرات | Changelog
 
-### v2.2.7 — 2026-04-01
+### v2.2.8 — 2026-04-01
 - ✅ إصلاح 22 مصطلحاً بمراجعة شاملة لكل قسم وتخصص:
   - **تصادم في الترجمات:** `Amend` → `تصحيح` (كان مطابقاً لـ Edit)؛ `Duplicate` → `تكرار`؛ `Quality Action` و `Quality Procedure` أصبح لكل منهما ترجمة مستقلة
   - **محاسبة وأصول ثابتة:** `Written Down Value` → `صافي القيمة الدفترية`؛ `Landed Cost` → `تكاليف الاستيراد`؛ `Credit Days` → `أيام الأجل`؛ `Total Number of Depreciations` → `عدد فترات الإهلاك`
