@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.2.5-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.2.6-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -201,6 +201,11 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.2.6 — 2026-04-01
+- ✅ تسجيل أمر `bench arabic-pro-audit-translations` في `hooks.py` حتى يُكتشف تلقائياً بعد التثبيت
+- ✅ إضافة `[tool.flit.module]` إلى `pyproject.toml` لإصلاح بناء الحزمة عبر flit وحل مشكلة `dynamic = ["version"]`
+- ✅ التحقق من اكتمال جميع تبعيات التثبيت (لا تبعيات Python إضافية مطلوبة)
 
 ### v2.2.5 — 2026-03-27
 - ✅ إصلاح ظهور رموز مثل `` و `` في القوائم المنسدلة عبر إبقاء `Font Awesome` خارج تطبيق الخط العربي
