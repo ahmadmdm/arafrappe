@@ -23,6 +23,9 @@ add_to_apps_screen = [
 # arabic_pro is a translation-only app; no required_apps beyond frappe core
 required_apps = ["frappe"]
 
+# ── Bench CLI Commands ────────────────────────────────────────────────────────
+commands = ["arabic_pro.commands.arabic_pro_audit_translations"]
+
 # ── Font Manager ───────────────────────────────────────────────────────────────
 boot_session = "arabic_pro.boot.boot_session"
 
