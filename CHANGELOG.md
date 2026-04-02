@@ -4,6 +4,17 @@
 
 ---
 
+## [2.2.9] - 2026-04-02
+
+### تحليل فجوات النظام وإكمال ترجمة Saudi HR
+- إجراء مقارنة مباشرة بين `arabic_pro/translations/ar.csv` و `saudi_hr/translations/ar.csv` لاستخراج النصوص غير المغطاة داخل `Arabic Pro`.
+- إضافة أكثر من 250 ترجمة مفقودة تخص الرواتب، الإجازات، الامتثال، التفتيش العمالي، التقارير، ورسائل التحقق في `Saudi HR`.
+- إضافة ترجمة عناصر واجهة `Arabic Pro` نفسها مثل `Arabic Pro Settings` و `Arabic Pro Translations`.
+
+### جودة ملف الترجمة
+- إصلاح صف CSV مكسور للمفتاح `Time, Leave & Payroll` كان يسبب خطأ `extra_columns` وتعارضاً مع المفتاح `Time` أثناء التدقيق.
+- إزالة صف ترجمة مكرر للمفتاح `Mobile Attendance` حتى يعود ملف `ar.csv` نظيفاً بالكامل مع أمر `bench arabic-pro-audit-translations`.
+
 ## [2.2.8] - 2026-04-01
 
 ### إضافة 54 ترجمة للمصطلحات غير المُترجمة
