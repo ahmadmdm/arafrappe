@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.2.9-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.2.10-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -53,7 +53,7 @@
 
 ```bash
 # 1. من داخل bench يعمل على Frappe v15، اسحب الإصدار المطلوب من GitHub
-bench get-app --branch v2.2.9 https://github.com/ahmadmdm/arafrappe.git
+bench get-app --branch v2.2.10 https://github.com/ahmadmdm/arafrappe.git
 
 # 2. تثبيته على الموقع
 bench --site YOUR_SITE install-app arabic_pro
@@ -68,7 +68,7 @@ bench --site YOUR_SITE clear-cache
 - التطبيق يضيف مدير الخطوط وصفحة الإعدادات عبر المسار: `/app/arabic-pro-settings`
 
 **الإصدار الحالي | Current Release:**
-- Git tag: `v2.2.9`
+- Git tag: `v2.2.10`
 - المستودع: `https://github.com/ahmadmdm/arafrappe.git`
 
 **تأكد من أن لغة النظام مضبوطة على العربية:**
@@ -207,6 +207,11 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.2.10 — 2026-04-06
+- ✅ إضافة ترجمات Saudi HR الجديدة الخاصة بدورة الأداء والمغادرة: `Salary Adjustment`, `Promotion Transfer`, `Exit Interview`
+- ✅ إضافة ترجمة حالات ورسائل مرتبطة بالميزات الجديدة مثل `Exit Interview Completed` و`Salary Adjustment Recommended`
+- ✅ تحديث تغطية واجهة Saudi HR حتى تظهر المصطلحات الجديدة مترجمة مباشرة داخل المساحات والنماذج العربية
 
 ### v2.2.9 — 2026-04-02
 - ✅ تحليل تغطية النظام نقطةً نقطة عبر مقارنة `arabic_pro` مع `saudi_hr` لاستخراج الفجوات الفعلية بدل التخمين
