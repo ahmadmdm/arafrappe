@@ -90,6 +90,240 @@
 		is_admin: false,
 	};
 	var _styleEl = null;
+	var _runtimeObserver = null;
+
+	var RUNTIME_TEXT_MAP = {
+		"Begin typing for results.": "ابدأ بالكتابة للنتائج.",
+		"Reports & Masters": "التقارير والبيانات الرئيسية",
+		"Create Your First Purchase Invoice": "إنشاء أول فاتورة مشتريات",
+		"Chart Of Accounts": "دليل الحسابات",
+		"Learn more about Chart of Accounts": "تعرّف أكثر على دليل الحسابات",
+		"Explore Chart of Accounts": "استكشاف دليل الحسابات",
+		"You can continue with the onboarding after exploring this page": "يمكنك متابعة الإعداد بعد استكشاف هذه الصفحة",
+		"Let’s create your first Purchase Invoice": "لننشئ أول فاتورة مشتريات",
+		"A Purchase Invoice is a bill received from a Supplier for a product(s) or service(s) delivery to your company. You can track payables through Purchase Invoice and process Payment Entries against it.": "فاتورة المشتريات هي فاتورة تُستلم من المورد مقابل توريد منتجات أو خدمات إلى شركتك. يمكنك من خلالها تتبّع الذمم الدائنة ومعالجة قيود الدفع المرتبطة بها.",
+		"Purchase Invoices can also be created against a Purchase Order or Purchase Receipt.": "يمكن أيضًا إنشاء فواتير المشتريات بالاستناد إلى أمر شراء أو إيصال شراء.",
+		"ERPNext sets up a simple chart of accounts for each Company you create, but you can modify it according to business and legal requirements.": "ينشئ ERPNext دليل حسابات مبسطًا لكل شركة تقوم بإنشائها، ويمكنك تعديله بما يتوافق مع احتياجات العمل والمتطلبات النظامية.",
+		"Selling Settings": "إعدادات المبيعات",
+		"CRM and Selling module’s features are configurable as per your business needs. Selling Settings is the place where you can set your preferences for:": "خصائص إدارة علاقات العملاء والمبيعات قابلة للتهيئة بحسب احتياجات عملك. في إعدادات المبيعات يمكنك تحديد تفضيلاتك لما يلي:",
+		"Customer naming and default values": "تسمية العملاء والقيم الافتراضية",
+		"Billing and shipping preference in sales transactions": "تفضيلات الفاتورة والشحن في معاملات البيع",
+		"Let’s walk-through Selling Settings": "تصفح إعدادات المبيعات",
+		"Buying Settings": "إعدادات المشتريات",
+		"Buying module’s features are highly configurable as per your business needs. Buying Settings is the place where you can set your preferences for:": "خصائص إدارة المشتريات قابلة للتهيئة بدرجة كبيرة بحسب احتياجات عملك. في إعدادات المشتريات يمكنك تحديد تفضيلاتك لما يلي:",
+		"Supplier naming and default values": "تسمية الموردين والقيم الافتراضية",
+		"Billing and shipping preference in buying transactions": "تفضيلات الفاتورة والشحن في معاملات الشراء",
+		"Let’s walk-through few Buying Settings": "تصفح إعدادات المشتريات",
+		"Review Stock Settings": "مراجعة إعدادات المخزون",
+		"In ERPNext, the Stock module’s features are configurable as per your business needs. Stock Settings is the place where you can set your preferences for:": "في ERPNext، خصائص إدارة المخزون قابلة للتهيئة بحسب احتياجات عملك. في إعدادات المخزون يمكنك تحديد تفضيلاتك لما يلي:",
+		"Default values for Item and Pricing": "القيم الافتراضية للصنف والتسعير",
+		"Default valuation method for inventory valuation": "طريقة التقييم الافتراضية لتقييم المخزون",
+		"Set preference for serialization and batching of item": "تحديد تفضيلات الترقيم التسلسلي والدفعات للأصناف",
+		"Set tolerance for over-receipt and delivery of items": "تحديد حدود السماح في الزيادة عند الاستلام وتسليم الأصناف",
+		"Fixed Asset Accounts": "حسابات الأصول الثابتة",
+		"With the company, a host of fixed asset accounts are pre-configured. To ensure your asset transactions are leading to correct accounting entries, you can review and set up following asset accounts as per your business requirements.": "مع إنشاء الشركة، يتم تجهيز مجموعة من حسابات الأصول الثابتة مسبقًا. ولضمان أن معاملات الأصول تولد القيود المحاسبية الصحيحة، يمكنك مراجعة وإعداد حسابات الأصول التالية بما يتوافق مع احتياجات عملك.",
+		"With the company, a host of fixed asset accounts are pre-configured. To ensure your asset transactions are leading to correct accounting entries, you can review and set up following asset accounts as per your business  requirements.": "مع إنشاء الشركة، يتم تجهيز مجموعة من حسابات الأصول الثابتة مسبقًا. ولضمان أن معاملات الأصول تولد القيود المحاسبية الصحيحة، يمكنك مراجعة وإعداد حسابات الأصول التالية بما يتوافق مع احتياجات عملك.",
+		"Fixed asset accounts (Asset account)": "حسابات الأصول الثابتة (حساب الأصل)",
+		"Accumulated depreciation": "الإهلاك المتراكم",
+		"Capital Work in progress (CWIP) account": "حساب الأعمال الرأسمالية قيد التنفيذ (CWIP)",
+		"Asset Depreciation account (Expense account)": "حساب إهلاك الأصل الثابت (حساب المصروف)",
+		"Introduction to Website": "مقدمة إلى الموقع الإلكتروني",
+		"Create Blogger": "إنشاء مدوّن",
+		"Add Blog Category": "إضافة تصنيف للمدونة",
+		"Enable Website Tracking": "تمكين تتبع الموقع الإلكتروني",
+		"Learn about Web Pages": "التعرّف على صفحات الويب",
+		"Alerts and Notifications": "التنبيهات والإشعارات",
+		"Print Format Builder (New)": "منشئ تنسيق الطباعة (الجديد)",
+		"SMS Settings": "إعدادات SMS",
+		"SMS Message Center": "مركز رسائل SMS",
+		"SMS Log": "سجل رسائل SMS",
+		"Jan ...": "يناير ...",
+		"Feb ...": "فبراير ...",
+		"Mar ...": "مارس ...",
+		"Apr ...": "أبريل ...",
+		"May ...": "مايو ...",
+		"Jun ...": "يونيو ...",
+		"Jul ...": "يوليو ...",
+		"Aug ...": "أغسطس ...",
+		"Sep ...": "سبتمبر ...",
+		"Oct ...": "أكتوبر ...",
+		"Nov ...": "نوفمبر ...",
+		"Dec ...": "ديسمبر ...",
+		" To Deliver": " للتسليم",
+		" Pending": " معلّق",
+		" To Receive": " للاستلام",
+		" To Bill": " للفوترة",
+	};
+
+	function translateRuntimeString(text) {
+		if (!text) return text;
+
+		var translatedText = text;
+
+		Object.keys(RUNTIME_TEXT_MAP).forEach(function (sourceText) {
+			if (translatedText.indexOf(sourceText) !== -1) {
+				translatedText = translatedText.split(sourceText).join(RUNTIME_TEXT_MAP[sourceText]);
+			}
+		});
+
+		var moreCharsMatch = translatedText.match(/^Type (\d+) or more characters for results\.$/);
+		if (moreCharsMatch) {
+			return "اكتب " + moreCharsMatch[1] + " أحرف أو أكثر لعرض النتائج.";
+		}
+
+		translatedText = translatedText.replace(
+			/Type (\d+) or more characters for results\./g,
+			function (_match, count) {
+				return "اكتب " + count + " أحرف أو أكثر لعرض النتائج.";
+			}
+		);
+
+		translatedText = translatedText.replace(
+			/Buying module’s features are highly configurable as per your business needs\. إعدادات المشتريات is the place where you can set your preferences for:/g,
+			"خصائص إدارة المشتريات قابلة للتهيئة بدرجة كبيرة بحسب احتياجات عملك. في إعدادات المشتريات يمكنك تحديد تفضيلاتك لما يلي:"
+		);
+
+		translatedText = translatedText.replace(
+			/Let’s walk-through few إعدادات المشتريات/g,
+			"تصفح إعدادات المشتريات"
+		);
+
+		translatedText = translatedText.replace(
+			/Jan \.{3}/g,
+			"يناير ..."
+		);
+		translatedText = translatedText.replace(
+			/Feb \.{3}/g,
+			"فبراير ..."
+		);
+		translatedText = translatedText.replace(
+			/Mar \.{3}/g,
+			"مارس ..."
+		);
+		translatedText = translatedText.replace(
+			/Apr \.{3}/g,
+			"أبريل ..."
+		);
+		translatedText = translatedText.replace(
+			/May \.{3}/g,
+			"مايو ..."
+		);
+		translatedText = translatedText.replace(
+			/Jun \.{3}/g,
+			"يونيو ..."
+		);
+		translatedText = translatedText.replace(
+			/Jul \.{3}/g,
+			"يوليو ..."
+		);
+		translatedText = translatedText.replace(
+			/Aug \.{3}/g,
+			"أغسطس ..."
+		);
+		translatedText = translatedText.replace(
+			/Sep \.{3}/g,
+			"سبتمبر ..."
+		);
+		translatedText = translatedText.replace(
+			/Oct \.{3}/g,
+			"أكتوبر ..."
+		);
+		translatedText = translatedText.replace(
+			/Nov \.{3}/g,
+			"نوفمبر ..."
+		);
+		translatedText = translatedText.replace(
+			/Dec \.{3}/g,
+			"ديسمبر ..."
+		);
+
+		translatedText = translatedText.replace(
+			/Warehouse Wise Stock Balance/g,
+			"رصيد المخزون حسب المستودع"
+		);
+
+		translatedText = translatedText.replace(/ Published\b/g, " منشور");
+		translatedText = translatedText.replace(/ Active\b/g, " نشط");
+
+		translatedText = translatedText.replace(/\bJan\b/g, "يناير");
+		translatedText = translatedText.replace(/\bFeb\b/g, "فبراير");
+		translatedText = translatedText.replace(/\bMar\b/g, "مارس");
+		translatedText = translatedText.replace(/\bApr\b/g, "أبريل");
+		translatedText = translatedText.replace(/\bMay\b/g, "مايو");
+		translatedText = translatedText.replace(/\bJun\b/g, "يونيو");
+		translatedText = translatedText.replace(/\bJul\b/g, "يوليو");
+		translatedText = translatedText.replace(/\bAug\b/g, "أغسطس");
+		translatedText = translatedText.replace(/\bSep\b/g, "سبتمبر");
+		translatedText = translatedText.replace(/\bOct\b/g, "أكتوبر");
+		translatedText = translatedText.replace(/\bNov\b/g, "نوفمبر");
+		translatedText = translatedText.replace(/\bDec\b/g, "ديسمبر");
+
+		return translatedText;
+	}
+
+	function translateRuntimeNode(root) {
+		if (!root) return;
+
+		if (root.nodeType === Node.TEXT_NODE) {
+			var translatedText = translateRuntimeString(root.textContent);
+			if (translatedText !== root.textContent) {
+				root.textContent = translatedText;
+			}
+			return;
+		}
+
+		if (root.nodeType !== Node.ELEMENT_NODE) return;
+
+		if (root.placeholder) {
+			var translatedPlaceholder = translateRuntimeString(root.placeholder);
+			if (translatedPlaceholder !== root.placeholder) {
+				root.placeholder = translatedPlaceholder;
+			}
+		}
+
+		if (root.title) {
+			var translatedTitle = translateRuntimeString(root.title);
+			if (translatedTitle !== root.title) {
+				root.title = translatedTitle;
+			}
+		}
+
+		var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+		var currentNode;
+		while ((currentNode = walker.nextNode())) {
+			var translated = translateRuntimeString(currentNode.textContent);
+			if (translated !== currentNode.textContent) {
+				currentNode.textContent = translated;
+			}
+		}
+	}
+
+	function ensureRuntimeTranslations() {
+		if (document.body) {
+			translateRuntimeNode(document.body);
+		}
+
+		if (_runtimeObserver || !window.MutationObserver || !document.body) return;
+
+		_runtimeObserver = new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
+				if (mutation.type === "characterData") {
+					translateRuntimeNode(mutation.target);
+					return;
+				}
+
+				mutation.addedNodes.forEach(function (node) {
+					translateRuntimeNode(node);
+				});
+			});
+		});
+
+		_runtimeObserver.observe(document.body, {
+			childList: true,
+			subtree: true,
+			characterData: true,
+		});
+	}
 
 	function getFontStack(font) {
 		return (
@@ -443,6 +677,7 @@
 		// Inject navbar item
 		setTimeout(injectNavbarItem, 600);
 		setTimeout(updateNavbarItem, 700);
+		setTimeout(ensureRuntimeTranslations, 200);
 	}
 
 	function lsGet(key) {
@@ -483,6 +718,7 @@
 			if (!document.getElementById("ap-navbar-font-item")) {
 				setTimeout(injectNavbarItem, 300);
 			}
+			setTimeout(ensureRuntimeTranslations, 200);
 		});
 	}
 })();

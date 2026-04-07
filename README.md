@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.2.10-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.3.0-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -10,9 +10,9 @@
 
 ## 📋 نظرة عامة | Overview
 
-**Arabic Pro** هو تطبيق ترجمة عربية احترافية لـ **Frappe Framework** و**ERPNext v15**، يوفر أكثر من **1,900 مصطلح مترجم** بعناية لتغطية شاملة لكامل واجهة النظام باللغة العربية.
+**Arabic Pro** هو تطبيق ترجمة عربية احترافية لـ **Frappe Framework** و**ERPNext v15**، يوفر أكثر من **2,300 مصطلح مترجم** بعناية مع تحسينات ترجمة ديناميكية لتغطية أوسع لكامل واجهة النظام باللغة العربية.
 
-**Arabic Pro** is a professional Arabic translation application for **Frappe Framework** and **ERPNext v15**, providing over **1,900 carefully translated terms** for comprehensive Arabic coverage across the entire system interface.
+**Arabic Pro** is a professional Arabic translation application for **Frappe Framework** and **ERPNext v15**, providing over **2,300 carefully translated terms** plus runtime translation enhancements for broader Arabic coverage across the full system interface.
 
 ---
 
@@ -20,7 +20,7 @@
 
 | الميزة | التفاصيل |
 |--------|----------|
-| 🗂️ **تغطية شاملة** | 1,900+ مصطلح يشمل جميع وحدات النظام |
+| 🗂️ **تغطية شاملة** | 2,300+ مصطلح يشمل جميع وحدات النظام |
 | 📊 **المحاسبة** | دفتر الأستاذ، ميزان المراجعة، الذمم، التقارير المالية |
 | 👥 **الموارد البشرية** | الموظفون، الرواتب، الإجازات، الحضور |
 | 🏢 **المبيعات والمشتريات** | الفواتير، الأوامر، العملاء، الموردون |
@@ -28,6 +28,7 @@
 | 🧾 **ZATCA** | كامل حقول الفوترة الإلكترونية السعودية |
 | 🏛️ **Saudi HR** | جميع مصطلحات الموارد البشرية السعودية |
 | 🔤 **مدير الخطوط** | اختيار خط عربي مخصص لكل مستخدم مع خط افتراضي للنظام |
+| ⚡ **ترجمة ديناميكية** | معالجة النصوص التي تظهر عبر JavaScript أو البطاقات التفاعلية خارج مسار CSV التقليدي |
 | ✅ **جودة عالية** | لا تكرارات، لا ترجمات فارغة، مراجعة احترافية |
 
 ---
@@ -53,7 +54,7 @@
 
 ```bash
 # 1. من داخل bench يعمل على Frappe v15، اسحب الإصدار المطلوب من GitHub
-bench get-app --branch v2.2.10 https://github.com/ahmadmdm/arafrappe.git
+bench get-app --branch v2.3.0 https://github.com/ahmadmdm/arafrappe.git
 
 # 2. تثبيته على الموقع
 bench --site YOUR_SITE install-app arabic_pro
@@ -66,9 +67,10 @@ bench --site YOUR_SITE clear-cache
 - لا توجد تبعيات Python إضافية خارج Frappe/ERPNext؛ ملف `pyproject.toml` يعلن `dependencies = []`
 - التطبيق يتطلب Bench جاهزاً على `Frappe v15` و`Python >= 3.10` قبل تنفيذ `bench get-app`
 - التطبيق يضيف مدير الخطوط وصفحة الإعدادات عبر المسار: `/app/arabic-pro-settings`
+- يتضمن التطبيق طبقة ترجمة ديناميكية لعناصر الواجهة التي لا تمر عبر آلية الترجمة القياسية في Frappe
 
 **الإصدار الحالي | Current Release:**
-- Git tag: `v2.2.10`
+- Git tag: `v2.3.0`
 - المستودع: `https://github.com/ahmadmdm/arafrappe.git`
 
 **تأكد من أن لغة النظام مضبوطة على العربية:**
@@ -80,7 +82,7 @@ bench --site YOUR_SITE clear-cache
 
 ```bash
 cd apps/arabic_pro
-git pull origin main
+git pull origin version-15
 
 bench --site YOUR_SITE clear-cache
 ```
@@ -133,7 +135,7 @@ arabic_pro/
 │   │   └── css/
 │   │       └── arabic_pro_font.css   # تنسيقات FAB والحوار وشبكة الخطوط
 │   └── translations/
-│       └── ar.csv          # ملف الترجمات (1,700+ مصطلح)
+│       └── ar.csv          # ملف الترجمات (2,300+ مصطلح)
 ├── pyproject.toml
 ├── setup.py
 └── README.md
@@ -143,16 +145,13 @@ arabic_pro/
 
 ## 📊 إحصائيات الترجمة | Translation Stats
 
-| الفئة | عدد المصطلحات |
-|-------|--------------|
-| المحاسبة والمالية | ~400 |
-| الموارد البشرية والرواتب | ~350 |
-| المبيعات والمشتريات | ~300 |
-| المخزون والمستودعات | ~200 |
-| ZATCA والفوترة الإلكترونية | ~80 |
-| الموارد البشرية السعودية | ~150 |
-| الواجهة العامة والنظام | ~220 |
-| **الإجمالي** | **~1,900+** |
+| المؤشر | القيمة |
+|-------|--------|
+| إجمالي صفوف الترجمة الصالحة | 2,359 |
+| التكرارات | 0 |
+| الترجمات الفارغة | 0 |
+| الصفوف ذات الأعمدة الزائدة | 0 |
+| **التغطية الحالية** | **2,300+ مصطلح مترجم** |
 
 ---
 
@@ -168,7 +167,7 @@ arabic_pro/
 
 ---
 
-## � مدير الخطوط العربية | Arabic Font Manager
+## مدير الخطوط العربية | Arabic Font Manager
 
 منذ الإصدار **v2.2.3**، يتضمن التطبيق نظام اختيار خطوط عربية احترافي يعمل على كامل واجهة Frappe Desk.
 
@@ -207,6 +206,12 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.3.0 — 2026-04-07
+- ✅ توسعة التغطية العربية إلى أكثر من 2,300 مصطلح مع تنظيف ملف الترجمة بالكامل حتى يمر تدقيق `bench arabic-pro-audit-translations` دون أي ملاحظات
+- ✅ إصلاح ترجمات وحدات متعددة على مستوى النظام مثل المحاسبة، المبيعات، المشتريات، المخزون، التصنيع، المشاريع، الجودة، الأصول، CRM، الموقع الإلكتروني، والأدوات
+- ✅ إضافة طبقة ترجمة ديناميكية للنصوص التي تُحقن في الواجهة عبر JavaScript مثل بطاقات onboarding، عناوين التقارير، الحالات المختصرة، وبعض النصوص المساعدة التي لا يغطيها CSV وحده
+- ✅ تحديث أصول JavaScript لكسر الكاش وضمان وصول الترجمات الجديدة مباشرة بعد التحديث
 
 ### v2.2.10 — 2026-04-06
 - ✅ إضافة ترجمات Saudi HR الجديدة الخاصة بدورة الأداء والمغادرة: `Salary Adjustment`, `Promotion Transfer`, `Exit Interview`
