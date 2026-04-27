@@ -91,8 +91,77 @@
 	};
 	var _styleEl = null;
 	var _runtimeObserver = null;
+	var ARABIC_CHAR_RE = /[\u0600-\u06FF]/;
+	var LATIN_CHAR_RE = /[A-Za-z]/;
 
 	var RUNTIME_TEXT_MAP = {
+		"Switch to Frappe CRM for smarter sales →": "انتقل إلى Frappe CRM لتجربة مبيعات أذكى →",
+		"Saudi HR / الموارد البشرية": "الموارد البشرية السعودية",
+		"حضور الموظفين / Attendance": "حضور الموظفين",
+		"Attendance Action Hub / لوحة متابعة الحضور": "مركز متابعة الحضور",
+		"Attendance Action Hub": "مركز متابعة الحضور",
+		"Team Attendance Review / مراجعة حضور الفريق": "مراجعة حضور الفريق",
+		"Team Attendance Review": "مراجعة حضور الفريق",
+		"Saudi Employee Voice Profile / البصمة الصوتية": "البصمة الصوتية للموظف",
+		"Saudi Employee Voice Profile": "البصمة الصوتية للموظف",
+		"Shift Type / تعريف وقت الدوام": "نوع الوردية",
+		"Shift Assignment / ربط الموظفين": "تعيين الوردية",
+		"Shift Assignment": "تعيين الوردية",
+		"Shift Assignment Tool / توزيع جماعي": "أداة توزيع الورديات",
+		"Shift Assignment Tool": "أداة توزيع الورديات",
+		"Attendance Location / سياسة الموقع": "موقع الحضور المعتمد",
+		"Attendance Location": "موقع الحضور المعتمد",
+		"WPS Submission / متابعة حماية الأجور": "متابعة ملف حماية الأجور",
+		"WPS Submission": "متابعة ملف حماية الأجور",
+		"WPS Submission Tracker / تقرير متابعة حماية الأجور": "سجل متابعة ملف حماية الأجور",
+		"WPS Submission Tracker": "سجل متابعة ملف حماية الأجور",
+		"Paid Payroll History / سجل الرواتب المصروفة": "سجل الرواتب المصروفة",
+		"Paid Payroll History": "سجل الرواتب المصروفة",
+		"Loading paid payroll history...": "جارٍ تحميل سجل الرواتب المصروفة...",
+		"Unable to load paid payroll history right now.": "تعذر تحميل سجل الرواتب المصروفة حاليًا.",
+		"No paid payroll records were found for this employee.": "لا توجد مسيرات رواتب مصروفة لهذا الموظف.",
+		"Active Contracts by Type": "العقود السارية حسب النوع",
+		"GOSI Monthly Contributions": "اشتراكات التأمينات الاجتماعية الشهرية",
+		"Compliance Actions by Area": "إجراءات الامتثال حسب المجال",
+		"Grievances by Type": "التظلمات حسب النوع",
+		"Investigations by Case Type": "التحقيقات حسب نوع الحالة",
+		"Legal Risk Distribution": "توزيع المخاطر النظامية",
+		"Nationality Distribution": "توزيع الجنسيات",
+		"Completed Compliance Actions": "إجراءات الامتثال المكتملة",
+		"Resolved Grievances": "التظلمات المحسومة",
+		"Appeals Under Review": "الاعتراضات قيد المراجعة",
+		"High Risk Legal References": "المراجع النظامية عالية المخاطر",
+		"Mobile Attendance": "الحضور عبر الجوال",
+		"Hiring Requisition": "طلب احتياج وظيفي",
+		"Promotion Transfer": "الترقية أو النقل الوظيفي",
+		"Exit Clearance": "إخلاء طرف الموظف",
+		"Reason / description": "مبرر الطلب",
+		"Face photo / face verification": "صورة التحقق",
+		"General Manager / CEO": "المدير العام / الرئيس التنفيذي",
+		"Head Office": "المكتب الرئيسي",
+		"Contract Hours": "ساعات العقد",
+		"Coordinates": "إحداثيات",
+		"Plus Code": "بلص كود",
+		"Plus Code:": "بلص كود:",
+		"Present": "حاضر",
+		"Absent": "غائب",
+		"Half Day": "نصف يوم",
+		"On Leave": "في إجازة",
+		"Paid": "مدفوع",
+		"Draft": "مسودة",
+		"Submitted": "معتمد",
+		"Bank Transfer": "تحويل بنكي",
+		"Capitalized": "مُرسمل",
+		"انشاء جديد": "إنشاء",
+		"IN": "دخول",
+		"OUT": "خروج",
+		"انشاء جديد أمر الإنتاج": "إنشاء أمر إنتاج جديد",
+		"Saudi HR Mobile": "منصة الحضور الذكي",
+		"الاجازات | Leave Application": "الإجازات",
+		"نوع التحول": "نوع الوردية",
+		"مهمة التحول": "تعيين الوردية",
+		"هوية شخصية": "المعرّف",
+		"GPS غير محدد بعد": "لم يُحدَّد الموقع بعد",
 		"Begin typing for results.": "ابدأ بالكتابة للنتائج.",
 		"Reports & Masters": "التقارير والبيانات الرئيسية",
 		"Create Your First Purchase Invoice": "إنشاء أول فاتورة مشتريات",
@@ -134,9 +203,23 @@
 		"Learn about Web Pages": "التعرّف على صفحات الويب",
 		"Alerts and Notifications": "التنبيهات والإشعارات",
 		"Print Format Builder (New)": "منشئ تنسيق الطباعة (الجديد)",
-		"SMS Settings": "إعدادات SMS",
-		"SMS Message Center": "مركز رسائل SMS",
-		"SMS Log": "سجل رسائل SMS",
+		"ERPNext Settings": "إعدادات النظام",
+		"إعدادات ERPNext": "إعدادات النظام",
+		"ERPNext Integrations": "تكاملات النظام",
+		"دمج ERPNext": "تكاملات النظام",
+		"SMS Settings": "إعدادات الرسائل النصية",
+		"SMS إعدادات": "إعدادات الرسائل النصية",
+		"SMS Message Center": "مركز الرسائل النصية",
+		"SMS Center": "مركز الرسائل النصية",
+		"مركز رسائل SMS": "مركز الرسائل النصية",
+		"SMS Log": "سجل الرسائل النصية",
+		"SMS سجل رسائل": "سجل الرسائل النصية",
+		"سجل رسائل SMS": "سجل الرسائل النصية",
+		"BOM Comparison Tool": "أداة مقارنة قائمة المواد",
+		"أداة مقارنة BOM": "أداة مقارنة قائمة المواد",
+		"VAT Return": "إقرار ضريبة القيمة المضافة",
+		"VAT Return2": "إقرار ضريبة القيمة المضافة 2",
+		"Stores...": "المستودعات...",
 		"Jan ...": "يناير ...",
 		"Feb ...": "فبراير ...",
 		"Mar ...": "مارس ...",
@@ -155,8 +238,111 @@
 		" To Bill": " للفوترة",
 	};
 
-	function translateRuntimeString(text) {
+	var TECHNICAL_FIELD_MAP = {
+		name: "المعرّف",
+		supplier: "المورّد",
+		supplier_name: "اسم المورّد",
+		company: "الشركة",
+		status: "الحالة",
+		payment_type: "نوع الدفع",
+		party_type: "نوع الطرف",
+		party: "الطرف",
+		customer: "العميل",
+		customer_name: "اسم العميل",
+		transaction_date: "تاريخ المعاملة",
+		delivery_status: "حالة التسليم",
+		billing_status: "حالة الفوترة",
+		item_name: "اسم الصنف",
+		item_group: "مجموعة الصنف",
+		has_variants: "له متغيرات",
+		variant_of: "متغير من",
+		item_code: "رمز الصنف",
+		asset_name: "اسم الأصل",
+		asset_category: "فئة الأصل",
+		production_item: "الصنف المنتج",
+		inspection_type: "نوع الفحص",
+		reference_name: "اسم المرجع",
+		job_title: "المسمى الوظيفي",
+		company_name: "اسم الشركة",
+		territory: "الإقليم",
+	};
+
+	function isArabicInterface() {
+		var lang = "";
+
+		try {
+			lang = ((window.frappe || {}).boot || {}).lang || "";
+		} catch (e) {
+			lang = "";
+		}
+
+		if (!lang && document.documentElement) {
+			lang = document.documentElement.getAttribute("lang") || "";
+		}
+
+		return /^ar\b/i.test(lang) || (document.documentElement && document.documentElement.dir === "rtl");
+	}
+
+	function polishArabicUiPhrase(text) {
 		if (!text) return text;
+
+		return text
+			.replace(/\bHR\b/g, "الموارد البشرية")
+			.replace(/\bCEO\b/g, "الرئيس التنفيذي")
+			.replace(/\bWPS\b/g, "حماية الأجور")
+			.replace(/\s{2,}/g, " ")
+			.replace(/\s+([،.:])/g, "$1")
+			.trim();
+	}
+
+	function stripBilingualUiLabel(text) {
+		if (!text || (text.indexOf("/") === -1 && text.indexOf("|") === -1)) return text;
+
+		var segments = text
+			.split(/[\/|]/)
+			.map(function (segment) {
+				return segment.trim();
+			})
+			.filter(Boolean);
+
+		if (segments.length < 2) return text;
+
+		var hasLatin = segments.some(function (segment) {
+			return LATIN_CHAR_RE.test(segment);
+		});
+		var arabicSegments = segments.filter(function (segment) {
+			return ARABIC_CHAR_RE.test(segment);
+		});
+
+		if (!hasLatin || !arabicSegments.length) return text;
+
+		return polishArabicUiPhrase(arabicSegments.join(" / "));
+	}
+
+	function translateTechnicalFieldToken(text) {
+		if (!text) return null;
+
+		var trimmedText = text.trim();
+		if (!trimmedText) return null;
+
+		if (trimmedText === "undefined") {
+			return "";
+		}
+
+		if (Object.prototype.hasOwnProperty.call(TECHNICAL_FIELD_MAP, trimmedText)) {
+			return TECHNICAL_FIELD_MAP[trimmedText];
+		}
+
+		return null;
+	}
+
+	function translateRuntimeString(text) {
+		if (!text || !isArabicInterface()) return text;
+
+		var technicalFieldTranslation = translateTechnicalFieldToken(text);
+		if (technicalFieldTranslation !== null) {
+			return technicalFieldTranslation;
+		}
 
 		var translatedText = text;
 
@@ -165,6 +351,8 @@
 				translatedText = translatedText.split(sourceText).join(RUNTIME_TEXT_MAP[sourceText]);
 			}
 		});
+
+		translatedText = stripBilingualUiLabel(translatedText);
 
 		var moreCharsMatch = translatedText.match(/^Type (\d+) or more characters for results\.$/);
 		if (moreCharsMatch) {
@@ -242,6 +430,25 @@
 			"رصيد المخزون حسب المستودع"
 		);
 
+		translatedText = translatedText.replace(/\bERPNext Settings\b/g, "إعدادات النظام");
+		translatedText = translatedText.replace(/\bERPNext Integrations\b/g, "تكاملات النظام");
+		translatedText = translatedText.replace(/إعدادات ERPNext/g, "إعدادات النظام");
+		translatedText = translatedText.replace(/دمج ERPNext/g, "تكاملات النظام");
+		translatedText = translatedText.replace(/\bSMS Settings\b/g, "إعدادات الرسائل النصية");
+		translatedText = translatedText.replace(/\bSMS (?:Message )?Center\b/g, "مركز الرسائل النصية");
+		translatedText = translatedText.replace(/\bSMS Log\b/g, "سجل الرسائل النصية");
+		translatedText = translatedText.replace(/SMS إعدادات/g, "إعدادات الرسائل النصية");
+		translatedText = translatedText.replace(/إعدادات SMS/g, "إعدادات الرسائل النصية");
+		translatedText = translatedText.replace(/مركز رسائل SMS/g, "مركز الرسائل النصية");
+		translatedText = translatedText.replace(/SMS سجل رسائل/g, "سجل الرسائل النصية");
+		translatedText = translatedText.replace(/سجل رسائل SMS/g, "سجل الرسائل النصية");
+		translatedText = translatedText.replace(/\bBOM Comparison Tool\b/g, "أداة مقارنة قائمة المواد");
+		translatedText = translatedText.replace(/أداة مقارنة BOM/g, "أداة مقارنة قائمة المواد");
+		translatedText = translatedText.replace(/\bVAT Return\s*2\b/g, "إقرار ضريبة القيمة المضافة 2");
+		translatedText = translatedText.replace(/\bVAT Return\b/g, "إقرار ضريبة القيمة المضافة");
+		translatedText = translatedText.replace(/\bStores\.\.\./g, "المستودعات...");
+		translatedText = translatedText.replace(/\bانشاء جديد\b/g, "إنشاء");
+
 		translatedText = translatedText.replace(/ Published\b/g, " منشور");
 		translatedText = translatedText.replace(/ Active\b/g, " نشط");
 
@@ -258,7 +465,7 @@
 		translatedText = translatedText.replace(/\bNov\b/g, "نوفمبر");
 		translatedText = translatedText.replace(/\bDec\b/g, "ديسمبر");
 
-		return translatedText;
+		return polishArabicUiPhrase(translatedText);
 	}
 
 	function translateRuntimeNode(root) {

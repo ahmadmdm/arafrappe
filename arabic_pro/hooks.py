@@ -29,7 +29,7 @@ commands = ["arabic_pro.commands.arabic_pro_audit_translations"]
 # ── Font Manager ───────────────────────────────────────────────────────────────
 boot_session = "arabic_pro.boot.boot_session"
 
-app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js?v=20260407g"]
+app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js?v=20260427f"]
 app_include_css = ["/assets/arabic_pro/css/arabic_pro_font.css?v=20260327b"]
-web_include_js = "/assets/arabic_pro/js/arabic_pro_font.js?v=20260407g"
+web_include_js = "/assets/arabic_pro/js/arabic_pro_font.js?v=20260427f"
 web_include_css = "/assets/arabic_pro/css/arabic_pro_font.css?v=20260327b"
