@@ -57,6 +57,37 @@ span.fa,
 	font-family: "FontAwesome" !important;
 }
 
+/* ─── Opt-out for interfaces that ship their own typeface ───────────────
+ *
+ * The rules above are deliberately `!important` so they win against Frappe's
+ * own stylesheet. That also means an embedded interface with its own type
+ * system — a custom SPA, a portal theme, a branded print format — cannot get
+ * its font back by any normal means.
+ *
+ * Mark such a container with `data-ap-font="off"`. Only the element-level
+ * selectors are neutralised — the ones above that target `input`, `button` and
+ * friends directly and would otherwise beat any normal rule. The `html, body`
+ * declarations need no counterpart here: they reach a nested container by
+ * inheritance only, and a container that sets its own `font-family` already
+ * wins that.
+ *
+ * Deliberately NOT `[data-ap-font="off"] *`. That also overrides the
+ * container's own internal variation — a display face on headings, a monospace
+ * face on code — which is exactly the type system the opt-out exists to
+ * protect.
+ *
+ * The FontAwesome guard above stays stronger (`i.fa` is more specific), so
+ * icons remain icons inside an opted-out container too.
+ */
+[data-ap-font="off"] input,
+[data-ap-font="off"] textarea,
+[data-ap-font="off"] select,
+[data-ap-font="off"] button,
+[data-ap-font="off"] .btn,
+[data-ap-font="off"] .form-control {
+	font-family: inherit !important;
+}
+
 /* ─── Navbar Font Item ──────────────────────────────────────────────── */
 a.ap-navbar-font-item {
 	direction: rtl;
