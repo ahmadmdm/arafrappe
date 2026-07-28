@@ -2,3 +2,12 @@ __pycache__/
 *.pyc
 *.egg-info/
 .env
+
+# Thmanyah's licence permits embedding the typeface in a product but forbids
+# redistributing, hosting or uploading the font files anywhere they can be
+# downloaded as fonts — a public repository is exactly that. See
+# arabic_pro/public/fonts/README.md for where to obtain them.
+arabic_pro/public/fonts/*.woff2
+arabic_pro/public/fonts/*.woff
+arabic_pro/public/fonts/*.ttf
+arabic_pro/public/fonts/*.otf

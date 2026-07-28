@@ -1,5 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Almarai:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&family=Lateef:wght@400;500;600;700&family=Harmattan:wght@400;500;600;700&display=swap");
 
+/* ─── Thmanyah Sans (local) ────────────────────────────────────────────
+   Every other face here comes from Google Fonts; this one ships with the
+   app. It is the typeface the Nova interface at /nova is set in, so
+   choosing it from the font manager makes the classic desk and the new
+   interface read as one product instead of two.
+   ─────────────────────────────────────────────────────────────────────── */
+@font-face {
+	font-family: "Thmanyah Sans";
+	src: url("/assets/arabic_pro/fonts/thmanyahsans-Light.woff2") format("woff2");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Thmanyah Sans";
+	src: url("/assets/arabic_pro/fonts/thmanyahsans-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Thmanyah Sans";
+	src: url("/assets/arabic_pro/fonts/thmanyahsans-Medium.woff2") format("woff2");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Thmanyah Sans";
+	src: url("/assets/arabic_pro/fonts/thmanyahsans-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Thmanyah Sans";
+	src: url("/assets/arabic_pro/fonts/thmanyahsans-Black.woff2") format("woff2");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* ═══════════════════════════════════════════════════════════════════
    Arabic Pro · Font Manager Styles
    ═══════════════════════════════════════════════════════════════════ */

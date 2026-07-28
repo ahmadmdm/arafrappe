@@ -26,7 +26,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "الخط الافتراضي للنظام",
-   "options": "Cairo\nTajawal\nAlmarai\nIBM Plex Sans Arabic\nNoto Sans Arabic\nAmiri\nScheherazade New\nReem Kufi\nLateef\nHarmattan",
+   "options": "Thmanyah Sans\nCairo\nTajawal\nAlmarai\nIBM Plex Sans Arabic\nNoto Sans Arabic\nAmiri\nScheherazade New\nReem Kufi\nLateef\nHarmattan",
    "reqd": 1
   },
   {
@@ -61,7 +61,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-03-22 00:00:00.000000",
+ "modified": "2026-07-28 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Arabic Pro",
  "name": "Arabic Pro Settings",
