@@ -1,32 +1,11 @@
-# الخطوط المحلّية · Local fonts
+# خط ثمانية · Thmanyah Sans
 
 معظم خطوط «عربي برو» تُحمَّل من Google Fonts عبر `@import` في
-`public/css/arabic_pro_font.css`. خط **ثمانية (Thmanyah Sans)** استثناء: يُثبَّت
-محليًا، وملفاته **غير مُضمَّنة في هذا المستودع** عن قصد.
+`public/css/arabic_pro_font.css`. **خط ثمانية** استثناء: ملفاته مرفقة هنا
+ويُقدَّم من خادمك مباشرة.
 
-Most of Arabic Pro's typefaces come from Google Fonts. **Thmanyah Sans** is the
-exception — it is installed locally, and its files are deliberately **not**
-committed here.
-
-## لماذا · Why
-
-ترخيص ثمانية يسمح بتضمين الخط داخل منتج، ويمنع صراحةً رفعه أو استضافته أو
-إتاحته للتنزيل على أي منصّة رقمية. المستودع العام هو تحديدًا تلك الحالة.
-
-> **PROHIBITED — You may NOT:** Redistribute, share, upload, host, or make the
-> Font Software available for download on any website, server, digital platform,
-> or file-sharing service.
->
-> **PERMITTED:** Embed the Font Software in websites, web applications, mobile
-> applications, or software products only as part of a compiled, packaged, or
-> obfuscated product.
-
-نسخ الملفات إلى هذا المجلّد على خادمك تضمين مسموح به. إيداعها في git ليس كذلك.
-
-## كيف تُثبّته · How to install it
-
-1. نزّل عائلة الخط من الموقع الرسمي: <https://thmanyah.com>
-2. حوّل الأوزان الخمسة إلى `woff2` وسمّها:
+Most of Arabic Pro's typefaces load from Google Fonts. **Thmanyah Sans** is the
+exception: its files are bundled here and served from your own site.
 
 ```
 thmanyahsans-Light.woff2      300
@@ -36,19 +15,45 @@ thmanyahsans-Bold.woff2       700
 thmanyahsans-Black.woff2      900
 ```
 
-3. ضعها في هذا المجلّد، ثم:
+اختره من مدير الخطوط أو من `Arabic Pro Settings → default_font`، ثم
+`bench build --app arabic_pro`.
 
-```bash
-bench build --app arabic_pro
-```
+## الحقوق · Rights
 
-4. اختر «ثمانية» من مدير الخطوط أو من `Arabic Pro Settings → default_font`.
+الخط من إنتاج **شركة ثمانية للنشر والتوزيع** — <https://thmanyah.com> — وليس
+جزءًا من هذا التطبيق ولا يشمله ترخيصه. نسختا الترخيص مرفقتان:
 
-## بدون الملفات · Without the files
+The typeface is © **thmanyah Publishing and Distribution**. It is **not** part of
+this application and is **not** covered by this application's licence. Both
+copies of its licence travel with it:
 
-التطبيق يعمل كما هو. تعريفات `@font-face` تفشل بصمت وتتراجع سلسلة الخطوط إلى
-`Noto Sans Arabic`، فلا شيء ينكسر — الخيار في القائمة فقط لا يعطي مظهرًا مختلفًا.
+- [`THMANYAH-LICENSE.pdf`](THMANYAH-LICENSE.pdf) — English
+- [`THMANYAH-LICENSE-ar.pdf`](THMANYAH-LICENSE-ar.pdf) — العربية، وهي المرجع
 
-The app works unchanged: the `@font-face` rules fail silently and the stack falls
-back to `Noto Sans Arabic`. Nothing breaks; the menu entry simply looks like the
-fallback until the files are in place.
+### اقرأ الترخيص قبل إعادة الاستخدام · Read it before reusing
+
+الاستخدام الشخصي والتجاري مسموح بلا مقابل. لكن الترخيص يفرّق بين **الاستخدام**
+و**إعادة التوزيع**، وينصّ تحت «PROHIBITED ACTIONS» على منع رفع ملفات الخط أو
+استضافتها أو إتاحتها للتنزيل، وعلى أن مصدر التنزيل هو الموقع الرسمي وحده.
+
+Personal and commercial **use** is granted free of charge. Redistribution is
+treated separately: the licence's PROHIBITED ACTIONS section restricts
+uploading, hosting or making the font files available for download, and names
+the official site as the only download source.
+
+وجودها في هذا المستودع قرار صاحبه. إن كنت تستنسخ هذا المشروع وتنوي إعادة نشره،
+راجع الترخيص بنفسك، أو راسل `ask@thmanyah.com` — الترخيص ينصّ على أن الاستثناءات
+والحقوق الموسّعة تُمنح بالمراسلة.
+
+Their presence here is the repository owner's decision. If you are cloning this
+and intend to republish, read the licence yourself or write to
+`ask@thmanyah.com` — the licence states that exceptions and extended rights are
+granted on request.
+
+## بدونها · Without them
+
+لو حُذفت الملفات، التطبيق يعمل كما هو: تعريفات `@font-face` تفشل بصمت وتتراجع
+سلسلة الخطوط إلى `Noto Sans Arabic`. لا شيء ينكسر.
+
+Remove them and nothing breaks: the `@font-face` rules fail silently and the
+stack falls back to `Noto Sans Arabic`.
