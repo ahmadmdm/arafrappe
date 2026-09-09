@@ -5,11 +5,11 @@ def boot_session(bootinfo):
 	"""Inject Arabic Pro font settings into the Frappe boot info."""
 	try:
 		settings = frappe.get_cached_doc("Arabic Pro Settings")
-		system_font = settings.default_font or "Cairo"
+		system_font = settings.default_font or "Thmanyah Sans"
 		system_size = settings.font_size or "Medium"
 		allow_override = int(settings.allow_user_font_override or 1)
 	except Exception:
-		system_font = "Cairo"
+		system_font = "Thmanyah Sans"
 		system_size = "Medium"
 		allow_override = 1
 

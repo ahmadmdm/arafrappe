@@ -1,6 +1,6 @@
 # 🌙 Arabic Pro Translations — ترجمة عربية احترافية
 
-[![Version](https://img.shields.io/badge/version-2.4.0-green)](https://github.com/ahmadmdm/arafrappe)
+[![Version](https://img.shields.io/badge/version-2.5.0-green)](https://github.com/ahmadmdm/arafrappe)
 [![Frappe](https://img.shields.io/badge/Frappe-v15-blue)](https://frappeframework.com)
 [![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)](https://erpnext.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](license.txt)
@@ -10,9 +10,9 @@
 
 ## 📋 نظرة عامة | Overview
 
-**Arabic Pro** هو تطبيق ترجمة عربية احترافية لـ **Frappe Framework** و**ERPNext v15**، يوفر أكثر من **2,400 مصطلح مترجم** بعناية مع تحسينات ترجمة ديناميكية لتغطية أوسع لكامل واجهة النظام باللغة العربية.
+**Arabic Pro** هو تطبيق ترجمة عربية احترافية لـ **Frappe Framework** و**ERPNext v15**، يوفر أكثر من **3,400 مصطلح مترجم** بعناية مع تحسينات ترجمة ديناميكية لتغطية أوسع لكامل واجهة النظام باللغة العربية.
 
-**Arabic Pro** is a professional Arabic translation application for **Frappe Framework** and **ERPNext v15**, providing over **2,400 carefully translated terms** plus runtime translation enhancements for broader Arabic coverage across the full system interface.
+**Arabic Pro** is a professional Arabic translation application for **Frappe Framework** and **ERPNext v15**, providing over **3,400 carefully translated terms** plus runtime translation enhancements for broader Arabic coverage across the full system interface.
 
 ---
 
@@ -20,7 +20,7 @@
 
 | الميزة | التفاصيل |
 |--------|----------|
-| 🗂️ **تغطية شاملة** | 2,400+ مصطلح يشمل جميع وحدات النظام |
+| 🗂️ **تغطية شاملة** | 3,400+ مصطلح يشمل جميع وحدات النظام |
 | 📊 **المحاسبة** | دفتر الأستاذ، ميزان المراجعة، الذمم، التقارير المالية |
 | 👥 **الموارد البشرية** | الموظفون، الرواتب، الإجازات، الحضور |
 | 🏢 **المبيعات والمشتريات** | الفواتير، الأوامر، العملاء، الموردون |
@@ -54,7 +54,7 @@
 
 ```bash
 # 1. من داخل bench يعمل على Frappe v15، اسحب الإصدار المطلوب من GitHub
-bench get-app --branch v2.4.0 https://github.com/ahmadmdm/arafrappe.git
+bench get-app --branch v2.5.0 https://github.com/ahmadmdm/arafrappe.git
 
 # 2. تثبيته على الموقع
 bench --site YOUR_SITE install-app arabic_pro
@@ -70,7 +70,7 @@ bench --site YOUR_SITE clear-cache
 - يتضمن التطبيق طبقة ترجمة ديناميكية لعناصر الواجهة التي لا تمر عبر آلية الترجمة القياسية في Frappe
 
 **الإصدار الحالي | Current Release:**
-- Git tag: `v2.4.0`
+- Git tag: `v2.5.0`
 - المستودع: `https://github.com/ahmadmdm/arafrappe.git`
 
 **تأكد من أن لغة النظام مضبوطة على العربية:**
@@ -147,11 +147,11 @@ arabic_pro/
 
 | المؤشر | القيمة |
 |-------|--------|
-| إجمالي صفوف الترجمة الصالحة | 2,359 |
+| إجمالي صفوف الترجمة الصالحة | 3,495 |
 | التكرارات | 0 |
 | الترجمات الفارغة | 0 |
 | الصفوف ذات الأعمدة الزائدة | 0 |
-| **التغطية الحالية** | **2,400+ مصطلح مترجم** |
+| **التغطية الحالية** | **3,400+ مصطلح مترجم** |
 
 ---
 
@@ -175,6 +175,7 @@ arabic_pro/
 
 | الخط | اسمه بالعربية | الطابع |
 |------|--------------|--------|
+| Thmanyah Sans | ثمانية | رقمي سعودي، خمسة أوزان محلية |
 | Cairo | كايرو | عصري شائع |
 | Tajawal | تجوال | بسيط أنيق |
 | Almarai | المرعي | مصمَّم للقراءة الرقمية |
@@ -206,6 +207,12 @@ arabic_pro/
 ---
 
 ## 📝 سجل التغييرات | Changelog
+
+### v2.5.0 — 2026-09-10
+- ✅ إضافة خط **Thmanyah Sans** بخمسة أوزان محلية وجعله الخط الافتراضي للنظام مع بقائه متاحًا في منتقي الخطوط
+- ✅ إصلاح تباعد سجل النشاط في واجهات RTL والحفاظ على المسافات الفعلية عند الترجمة والنسخ وقارئات الشاشة
+- ✅ تصحيح ترجمة `Payment Reconciliation` إلى «تسوية المدفوعات»
+- ✅ توسيع التغطية إلى 3,495 مصطلحًا مع دعم تعطيل تطبيق الخط داخل الواجهات المضمّنة ذات الهوية المستقلة
 
 ### v2.4.0 — 2026-04-27
 - ✅ توسيع طبقة الترجمة الديناميكية لتغطي صفحات القوائم والمرشحات داخل المحاسبة والمشتريات والمبيعات والمخزون والأصول والتصنيع والجودة وCRM

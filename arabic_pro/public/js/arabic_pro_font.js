@@ -13,8 +13,8 @@
 		{
 			id: "Thmanyah Sans",
 			nameAr: "ثمانية",
-			desc: "خط الواجهة الجديدة · خمسة أوزان · محلي",
-			sample: "واجهة موحّدة عبر النظام بالكامل",
+			desc: "رقمي سعودي · خمسة أوزان · محلي",
+			sample: "إدارة الحسابات والتقارير المالية باحتراف",
 		},
 		{
 			id: "Cairo",
@@ -86,11 +86,11 @@
 	};
 
 	// ─── State ─────────────────────────────────────────────────────────────────
-	var _current = { font: "Cairo", size: "Medium" };
+	var _current = { font: "Thmanyah Sans", size: "Medium" };
 	var _settings = {
-		font: "Cairo",
+		font: "Thmanyah Sans",
 		size: "Medium",
-		system_font: "Cairo",
+		system_font: "Thmanyah Sans",
 		system_size: "Medium",
 		allow_override: 1,
 		is_admin: false,
@@ -101,6 +101,8 @@
 	var LATIN_CHAR_RE = /[A-Za-z]/;
 
 	var RUNTIME_TEXT_MAP = {
+		"Payment Reconciliation": "تسوية المدفوعات",
+		"دفع المصالحة": "تسوية المدفوعات",
 		"Switch to Frappe CRM for smarter sales →": "انتقل إلى Frappe CRM لتجربة مبيعات أذكى →",
 		"Saudi HR / الموارد البشرية": "الموارد البشرية السعودية",
 		"حضور الموظفين / Attendance": "حضور الموظفين",
@@ -478,8 +480,19 @@
 		if (!root) return;
 
 		if (root.nodeType === Node.TEXT_NODE) {
-			var translatedText = translateRuntimeString(root.textContent);
-			if (translatedText !== root.textContent) {
+			var originalText = root.textContent;
+			// Inline timeline elements rely on whitespace-only text nodes as their
+			// visual separator. Translating and trimming those nodes joins names and
+			// actions together (for example: "محمد فايزقام").
+			if (!originalText || !originalText.trim()) return;
+
+			var leadingSpace = (originalText.match(/^\s+/) || [""])[0];
+			var trailingSpace = (originalText.match(/\s+$/) || [""])[0];
+			var contentEnd = originalText.length - trailingSpace.length;
+			var coreText = originalText.slice(leadingSpace.length, contentEnd);
+			var translatedText =
+				leadingSpace + translateRuntimeString(coreText) + trailingSpace;
+			if (translatedText !== originalText) {
 				root.textContent = translatedText;
 			}
 			return;
@@ -504,10 +517,9 @@
 		var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
 		var currentNode;
 		while ((currentNode = walker.nextNode())) {
-			var translated = translateRuntimeString(currentNode.textContent);
-			if (translated !== currentNode.textContent) {
-				currentNode.textContent = translated;
-			}
+			// Use the same whitespace-preserving path during the initial full-page
+			// scan as we use for later MutationObserver updates.
+			translateRuntimeNode(currentNode);
 		}
 	}
 
@@ -571,7 +583,7 @@
 	}
 
 	function applyFont(font, size) {
-		font = font || "Cairo";
+		font = font || "Thmanyah Sans";
 		size = size || "Medium";
 		_current.font = font;
 		_current.size = size;
@@ -857,7 +869,7 @@
 				method: "arabic_pro.api.reset_user_font",
 				callback: function (r) {
 					if (!r.exc) {
-						var sysFont = _settings.system_font || "Cairo";
+						var sysFont = _settings.system_font || "Thmanyah Sans";
 						var sysSize = _settings.system_size || "Medium";
 						applyFont(sysFont, sysSize);
 						_settings.user_font = "";
@@ -883,7 +895,7 @@
 		}
 
 		// Apply font from bootinfo or localStorage fallback
-		var font = _settings.font || lsGet("arabic_pro_font") || "Cairo";
+		var font = _settings.font || lsGet("arabic_pro_font") || "Thmanyah Sans";
 		var size = _settings.size || lsGet("arabic_pro_font_size") || "Medium";
 		applyFont(font, size);
 

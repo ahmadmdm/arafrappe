@@ -48,8 +48,23 @@
 
 /* ─── CSS Variable (updated dynamically by JS) ─────────────────────── */
 :root {
-	--ap-font-family: "Cairo", "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, Arial, sans-serif;
+	--ap-font-family: "Thmanyah Sans", "Cairo", "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, Arial, sans-serif;
 	--ap-font-size: 14px;
+}
+
+/* Frappe timeline templates render adjacent inline nodes without whitespace
+   (action link, user link, description, and timestamp). Logical margins keep
+   those phrases readable in both RTL and LTR without changing copied text. */
+.new-timeline .timeline-content > a {
+	margin-inline-end: 0.32em;
+}
+
+.new-timeline .timeline-content > span {
+	margin-inline-start: 0.32em;
+}
+
+.new-timeline .timeline-content > span > .frappe-timestamp {
+	margin-inline-start: 0.24em;
 }
 
 /* ─── Global Font Application ──────────────────────────────────────── */

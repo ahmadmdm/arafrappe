@@ -20,7 +20,7 @@
    "label": "إعدادات الخط الافتراضي للنظام"
   },
   {
-   "default": "Cairo",
+   "default": "Thmanyah Sans",
    "description": "الخط الذي سيُطبَّق على جميع مستخدمي النظام افتراضياً",
    "fieldname": "default_font",
    "fieldtype": "Select",
@@ -56,7 +56,7 @@
   {
    "fieldname": "info_html",
    "fieldtype": "HTML",
-   "options": "<div class='alert alert-info' style='direction:rtl; text-align:right; font-size:13px;'><b>الخطوط المتاحة:</b><br><ul style='margin-top:8px;'><li><b>Cairo</b> — خط عصري شائع الاستخدام</li><li><b>Tajawal</b> — خط بسيط وخفيف</li><li><b>Almarai</b> — مصمَّم للقراءة الرقمية</li><li><b>IBM Plex Sans Arabic</b> — خط احترافي تقني</li><li><b>Noto Sans Arabic</b> — خط شامل من Google</li><li><b>Amiri</b> — خط نسخي كلاسيكي أنيق</li><li><b>Scheherazade New</b> — خط تقليدي راقٍ</li><li><b>Reem Kufi</b> — خط كوفي هندسي عصري</li><li><b>Lateef</b> — خط نظيف وسلس</li><li><b>Harmattan</b> — خط أنيق وخفيف</li></ul></div>"
+   "options": "<div class='alert alert-info' style='direction:rtl; text-align:right; font-size:13px;'><b>الخطوط المتاحة:</b><br><ul style='margin-top:8px;'><li><b>Thmanyah Sans</b> — خط ثمانية الرقمي؛ واضح ومناسب لواجهات الأعمال</li><li><b>Cairo</b> — خط عصري شائع الاستخدام</li><li><b>Tajawal</b> — خط بسيط وخفيف</li><li><b>Almarai</b> — مصمَّم للقراءة الرقمية</li><li><b>IBM Plex Sans Arabic</b> — خط احترافي تقني</li><li><b>Noto Sans Arabic</b> — خط شامل من Google</li><li><b>Amiri</b> — خط نسخي كلاسيكي أنيق</li><li><b>Scheherazade New</b> — خط تقليدي راقٍ</li><li><b>Reem Kufi</b> — خط كوفي هندسي عصري</li><li><b>Lateef</b> — خط نظيف وسلس</li><li><b>Harmattan</b> — خط أنيق وخفيف</li></ul></div>"
   }
  ],
  "issingle": 1,

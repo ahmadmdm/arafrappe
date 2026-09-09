@@ -1,6 +1,7 @@
 import frappe
 
 VALID_FONTS = [
+	"Thmanyah Sans",
 	"Cairo",
 	"Tajawal",
 	"Almarai",
@@ -52,11 +53,11 @@ def get_font_settings():
 	"""Return merged font settings for the current user (used by JS if bootinfo unavailable)."""
 	try:
 		settings = frappe.get_cached_doc("Arabic Pro Settings")
-		system_font = settings.default_font or "Cairo"
+		system_font = settings.default_font or "Thmanyah Sans"
 		system_size = settings.font_size or "Medium"
 		allow_override = int(settings.allow_user_font_override or 1)
 	except Exception:
-		system_font = "Cairo"
+		system_font = "Thmanyah Sans"
 		system_size = "Medium"
 		allow_override = 1
 
