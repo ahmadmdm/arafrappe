@@ -1,0 +1,29 @@
+{
+ "doctype": "DocType",
+ "name": "Arabic Pro Closing Exception",
+ "module": "Arabic Pro",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["category", "title", "control_signal", "account", "amount", "priority", "status", "column_break_1", "effect", "responsible", "voucher_type", "voucher_no", "reason", "action_taken", "evidence_file"],
+ "fields": [
+  {"fieldname":"category","fieldtype":"Select","label":"المجال","options":"البنك\nالعملاء\nالموردون\nالمخزون\nالأصول\nالضرائب\nالاستحقاقات\nأخرى","reqd":1,"in_list_view":1},
+  {"fieldname":"title","fieldtype":"Data","label":"وصف الفرق","reqd":1,"in_list_view":1},
+  {"fieldname":"control_signal","fieldtype":"Select","label":"مؤشر تمت مراجعته","options":"\nقيود مسودة\nعمليات بنك غير مطابقة\nدفعات غير مخصصة","description":"اختر المؤشر إذا كان هذا السجل يفسر تنبيهًا ظاهرًا في لوحة المراجعة."},
+  {"fieldname":"account","fieldtype":"Link","label":"الحساب المتأثر","options":"Account"},
+  {"fieldname":"amount","fieldtype":"Currency","label":"مبلغ الفرق","description":"أدخل قيمة الفرق بالعملة الأساسية للشركة.","in_list_view":1},
+  {"fieldname":"priority","fieldtype":"Select","label":"الأولوية","options":"غير محددة\nمرتفعة\nمتوسطة\nمنخفضة","read_only":1,"in_list_view":1},
+  {"fieldname":"status","fieldtype":"Select","label":"حالة المعالجة","options":"مفتوح\nقيد المعالجة\nمغلق","default":"مفتوح","reqd":1,"in_list_view":1},
+  {"fieldname":"column_break_1","fieldtype":"Column Break"},
+  {"fieldname":"effect","fieldtype":"Select","label":"الأثر المتوقع","options":"قائمة الدخل\nالميزانية العمومية\nكلتاهما\nغير محدد"},
+  {"fieldname":"responsible","fieldtype":"Link","label":"المسؤول عن المعالجة","options":"User"},
+  {"fieldname":"voucher_type","fieldtype":"Link","label":"نوع المستند المرتبط","options":"DocType"},
+  {"fieldname":"voucher_no","fieldtype":"Dynamic Link","label":"رقم المستند المرتبط","options":"voucher_type"},
+  {"fieldname":"reason","fieldtype":"Small Text","label":"سبب الفرق"},
+  {"fieldname":"action_taken","fieldtype":"Small Text","label":"الإجراء المتخذ"},
+  {"fieldname":"evidence_file","fieldtype":"Attach","label":"المستند المؤيد","description":"أرفق الدليل قبل وضع الحالة «مغلق»."}
+ ],
+ "permissions": [],
+ "sort_field":"modified",
+ "sort_order":"DESC"
+}

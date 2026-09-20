@@ -1,0 +1,88 @@
+.ap-account-type-helper {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.35rem 0.8rem;
+	margin-top: 0.55rem;
+	font-size: 0.83rem;
+	line-height: 1.65;
+}
+
+.ap-account-type-summary { color: var(--text-muted); }
+.ap-account-type-open {
+	border: 0;
+	background: none;
+	padding: 0;
+	color: var(--primary);
+	font-weight: 600;
+	cursor: pointer;
+}
+.ap-account-type-open:hover,
+.ap-account-type-open:focus-visible { text-decoration: underline; }
+
+.ap-account-guide { color: var(--text-color); }
+.ap-account-guide-note {
+	margin: 0 0 1rem;
+	padding: 0.8rem 1rem;
+	background: var(--bg-light-gray);
+	border-radius: 0.6rem;
+	line-height: 1.7;
+}
+.ap-account-guide-recommendation {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	margin-bottom: 1rem;
+	padding: 0.8rem 1rem;
+	border: 1px solid var(--primary);
+	border-radius: 0.6rem;
+	line-height: 1.6;
+}
+.ap-account-guide-layout {
+	display: grid;
+	grid-template-columns: minmax(14rem, 1fr) minmax(15rem, 1.2fr);
+	gap: 1rem;
+}
+.ap-account-guide-layout label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+.ap-account-guide-options {
+	max-height: min(48vh, 28rem);
+	overflow: auto;
+	margin-top: 0.5rem;
+	border: 1px solid var(--border-color);
+	border-radius: 0.6rem;
+}
+.ap-account-guide-option {
+	display: block;
+	width: 100%;
+	padding: 0.55rem 0.8rem;
+	border: 0;
+	border-bottom: 1px solid var(--border-color);
+	background: transparent;
+	color: var(--text-color);
+	text-align: start;
+	cursor: pointer;
+}
+.ap-account-guide-option:last-child { border-bottom: 0; }
+.ap-account-guide-option:hover,
+.ap-account-guide-option:focus-visible { background: var(--bg-light-gray); }
+.ap-account-guide-option.is-active {
+	background: var(--control-bg);
+	color: var(--primary);
+	font-weight: 700;
+}
+.ap-account-guide-detail {
+	align-self: start;
+	min-height: 10rem;
+	padding: 1.2rem;
+	border: 1px solid var(--border-color);
+	border-radius: 0.6rem;
+	line-height: 1.8;
+}
+.ap-account-guide-eyebrow { color: var(--text-muted); font-size: 0.8rem; }
+.ap-account-guide-detail h4 { margin: 0.3rem 0 0.6rem; }
+.ap-account-guide-detail small { color: var(--text-muted); }
+@media (max-width: 680px) {
+	.ap-account-guide-layout { grid-template-columns: 1fr; }
+	.ap-account-guide-options { max-height: 12rem; }
+}

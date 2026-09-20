@@ -1,0 +1,21 @@
+{
+ "doctype":"DocType",
+ "name":"Arabic Pro Closing Checklist",
+ "module":"Arabic Pro",
+ "istable":1,
+ "editable_grid":1,
+ "engine":"InnoDB",
+ "field_order":["category","title","status","responsible","due_date","guidance","notes","evidence_file","action_label","action_route"],
+ "fields":[
+  {"fieldname":"category","fieldtype":"Select","label":"المجال","options":"تهيئة الفترة\nالقيود\nالبنوك والنقد\nالعملاء\nالموردون\nالمخزون\nالأصول الثابتة\nالضرائب\nالرواتب\nالاستحقاقات\nالتقارير المالية\nالإقفال والترحيل","in_list_view":1,"columns":2},
+  {"fieldname":"title","fieldtype":"Data","label":"الفحص المقترح","reqd":1,"in_list_view":1,"columns":4},
+  {"fieldname":"status","fieldtype":"Select","label":"حالة المتابعة","options":"لم يبدأ\nقيد المراجعة\nمكتمل\nغير منطبق","default":"لم يبدأ","in_list_view":1,"columns":2},
+  {"fieldname":"responsible","fieldtype":"Link","label":"المسؤول","options":"User","in_list_view":1,"columns":2},
+  {"fieldname":"due_date","fieldtype":"Date","label":"تاريخ مستهدف","in_list_view":1,"columns":2},
+  {"fieldname":"guidance","fieldtype":"Small Text","label":"لماذا وكيف نراجعه؟","read_only":1},
+  {"fieldname":"notes","fieldtype":"Small Text","label":"ملاحظة المحاسب"},
+  {"fieldname":"evidence_file","fieldtype":"Attach","label":"دليل اختياري"},
+  {"fieldname":"action_label","fieldtype":"Data","label":"اسم الاختصار","read_only":1,"hidden":1},
+  {"fieldname":"action_route","fieldtype":"Data","label":"المسار","read_only":1,"hidden":1}
+ ]
+}
