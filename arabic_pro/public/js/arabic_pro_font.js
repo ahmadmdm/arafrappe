@@ -82,7 +82,7 @@
 		Small: { px: "13px", ar: "صغير", en: "S" },
 		Medium: { px: "14px", ar: "متوسط", en: "M" },
 		Large: { px: "15px", ar: "كبير", en: "L" },
-		XLarge: { px: "16px", ar: "XL كبير جداً", en: "XL" },
+		XLarge: { px: "16px", ar: "كبير جداً", en: "XL" },
 	};
 
 	// ─── State ─────────────────────────────────────────────────────────────────
@@ -478,6 +478,16 @@
 
 	function translateRuntimeNode(root) {
 		if (!root) return;
+		// Translate interface copy, never accounting/customer data or executable
+		// text. Exact UI tokens such as "May" can also be legitimate names.
+		var element = root.nodeType === Node.TEXT_NODE ? root.parentElement : root;
+		if (element && element.closest && element.closest(
+			'script,style,code,pre,textarea,[contenteditable],.ql-editor,' +
+			'[data-ap-translate="off"],.control-value,.like-disabled-input,.static-area,' +
+			'.dt-scrollable,.list-row-col,.timeline-content,.comment-content,.grid-body,.awesomplete ul,' +
+			'.smart-ledger-strip,.smart-print,.ap-close-desk,' +
+			'.ap-font-card,.ap-current-font-info'
+		)) return;
 
 		if (root.nodeType === Node.TEXT_NODE) {
 			var originalText = root.textContent;
@@ -583,8 +593,8 @@
 	}
 
 	function applyFont(font, size) {
-		font = font || "Thmanyah Sans";
-		size = size || "Medium";
+		font = FONTS.some(function (item) { return item.id === font; }) ? font : "Thmanyah Sans";
+		size = Object.prototype.hasOwnProperty.call(SIZE_MAP, size) ? size : "Medium";
 		_current.font = font;
 		_current.size = size;
 
@@ -666,6 +676,8 @@
 	function showFontPicker() {
 		var allowOverride = !!_settings.allow_override;
 		var isAdmin = !!_settings.is_admin;
+		var original = { font: _current.font, size: _current.size };
+		var committed = false;
 
 		var d = new frappe.ui.Dialog({
 			title: "🔤 اختيار الخط العربي",
@@ -674,6 +686,9 @@
 		});
 
 		d.$wrapper.addClass("ap-font-picker-dialog");
+		d.$wrapper.on("hidden.bs.modal", function () {
+			if (!committed) applyFont(original.font, original.size);
+		});
 
 		// ── Size selector ──
 		var sizeHtml =
@@ -724,12 +739,12 @@
 					? '<span class="ap-selected-badge">المحفوظ</span>'
 					: "") +
 				"</div>" +
-				'<div class="ap-font-sample" style=\'font-family:"' +
+				'<div class="ap-font-sample" style=\'--ap-preview-font:"' +
 				f.id +
 				"\",sans-serif'>" +
 				f.sample +
 				"</div>" +
-				'<div class="ap-font-name-ar" style=\'font-family:"' +
+				'<div class="ap-font-name-ar" style=\'--ap-preview-font:"' +
 				f.id +
 				"\",sans-serif'><b>" +
 				f.nameAr +
@@ -744,7 +759,7 @@
 		var lockedHtml = "";
 		if (!allowOverride && !isAdmin) {
 			lockedHtml =
-				'<div class="ap-locked-notice">🔒 تغيير الخط الشخصي غير مسموح به حالياً. يمكنك معاينة الخطوط فقط.</div>';
+				'<div class="ap-locked-notice">🔒 الخط وحجمه محددان بواسطة مسؤول النظام؛ التغيير الشخصي غير متاح.</div>';
 		}
 
 		// ── Admin section ──
@@ -783,6 +798,7 @@
 
 		// ── Events: size button click ──
 		d.$body.on("click", ".ap-size-btn", function () {
+			if (!allowOverride && !isAdmin) return;
 			d.$body.find(".ap-size-btn").removeClass("selected");
 			$(this).addClass("selected");
 			applyFont(_current.font, $(this).data("size"));
@@ -805,11 +821,15 @@
 						args: {
 							doctype: "Arabic Pro Settings",
 							name: "Arabic Pro Settings",
-							fieldname: { default_font: _current.font },
+							fieldname: { default_font: _current.font, font_size: _current.size },
 						},
 						callback: function (r) {
 							if (!r.exc) {
 								_settings.system_font = _current.font;
+								_settings.system_size = _current.size;
+								if (!allowOverride) {
+									original = { font: _current.font, size: _current.size };
+								}
 								frappe.show_alert({
 									message:
 										"تم تعيين <b>" +
@@ -838,8 +858,8 @@
 		});
 
 		// ── Primary action: Save ──
-		d.set_primary_action(__("حفظ"), function () {
-			if (!allowOverride && !isAdmin) {
+		d.set_primary_action(__(allowOverride ? "حفظ" : "إغلاق"), function () {
+			if (!allowOverride) {
 				d.hide();
 				return;
 			}
@@ -848,6 +868,7 @@
 				args: { font: _current.font, size: _current.size },
 				callback: function (r) {
 					if (!r.exc) {
+						committed = true;
 						_settings.user_font = _current.font;
 						_settings.user_size = _current.size;
 						frappe.show_alert({
@@ -872,6 +893,7 @@
 						var sysFont = _settings.system_font || "Thmanyah Sans";
 						var sysSize = _settings.system_size || "Medium";
 						applyFont(sysFont, sysSize);
+						committed = true;
 						_settings.user_font = "";
 						_settings.user_size = "";
 						frappe.show_alert({

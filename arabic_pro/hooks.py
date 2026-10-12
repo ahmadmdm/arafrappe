@@ -1,4 +1,6 @@
 from . import __version__ as app_version
+from hashlib import sha256
+from pathlib import Path
 
 
 app_name = "arabic_pro"
@@ -29,36 +31,14 @@ commands = ["arabic_pro.commands.arabic_pro_audit_translations"]
 # ── Font Manager ───────────────────────────────────────────────────────────────
 boot_session = "arabic_pro.boot.boot_session"
 
-app_include_js = ["/assets/arabic_pro/js/arabic_pro_font.js?v=20260910c"]
-app_include_css = ["/assets/arabic_pro/css/arabic_pro_font.css?v=20260910c"]
-web_include_js = "/assets/arabic_pro/js/arabic_pro_font.js?v=20260910c"
-web_include_css = "/assets/arabic_pro/css/arabic_pro_font.css?v=20260910c"
-
-# Accountant-facing guidance on Account.account_type. Values remain ERPNext's
-# original English identifiers; only labels and help content are localized.
-doctype_js = {
-    "Account": "public/js/account_type_guide.js",
-    "Journal Entry": "public/js/journal_entry_guide.js",
-}
-app_include_css += ["/assets/arabic_pro/css/account_type_guide.css?v=20260912a"]
-app_include_css += ["/assets/arabic_pro/css/accounting_cycle_guide.css?v=20260912c"]
-app_include_css += ["/assets/arabic_pro/css/closing_review.css?v=20260919b"]
-
-# Keep a discoverable link in Accounting without replacing user shortcuts.
-after_migrate = [
-    "arabic_pro.workspace.ensure_accounting_guide_shortcut",
-    "arabic_pro.arabic_pro.doctype.arabic_pro_closing_file.arabic_pro_closing_file.backfill_closing_checklists",
-]
-
-# A posting can invalidate a previously reviewed close. The scheduled sweep also
-# catches batched ledger changes that do not fire GL Entry document hooks.
-doc_events = {
-    "GL Entry": {
-        "after_insert": "arabic_pro.arabic_pro.doctype.arabic_pro_closing_file.arabic_pro_closing_file.on_gl_entry_change",
-        "on_update": "arabic_pro.arabic_pro.doctype.arabic_pro_closing_file.arabic_pro_closing_file.on_gl_entry_change",
-        "on_trash": "arabic_pro.arabic_pro.doctype.arabic_pro_closing_file.arabic_pro_closing_file.on_gl_entry_change",
-    },
-}
-scheduler_events = {
-    "hourly": ["arabic_pro.arabic_pro.doctype.arabic_pro_closing_file.arabic_pro_closing_file.scan_ledger_changes"],
-}
+# Static app assets are cached for a long time. Derive their version from
+# content so rebuilding a local/deployed image actually refreshes the browser.
+_public = Path(__file__).parent / "public"
+_font_revision = sha256(
+    (_public / "js/arabic_pro_font.js").read_bytes()
+    + (_public / "css/arabic_pro_font.css").read_bytes()
+).hexdigest()[:12]
+app_include_js = [f"/assets/arabic_pro/js/arabic_pro_font.js?v={_font_revision}"]
+app_include_css = [f"/assets/arabic_pro/css/arabic_pro_font.css?v={_font_revision}"]
+web_include_js = app_include_js[0]
+web_include_css = app_include_css[0]

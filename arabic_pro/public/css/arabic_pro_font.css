@@ -349,6 +349,13 @@ a.ap-navbar-font-item .ap-navbar-icon {
 	direction: rtl;
 }
 
+/* Override the global modal font only for intentional font previews. */
+.ap-font-picker-dialog .ap-font-sample,
+.ap-font-picker-dialog .ap-font-name-ar,
+.ap-font-picker-dialog .ap-font-name-ar b {
+	font-family: var(--ap-preview-font) !important;
+}
+
 /* ─── Badges ────────────────────────────────────────────────────────── */
 .ap-default-badge {
 	display: inline-block;
